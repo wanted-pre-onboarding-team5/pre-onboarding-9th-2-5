@@ -1,5 +1,5 @@
 import { RepeatIcon, StarIcon, SunIcon } from '@chakra-ui/icons';
-import { HStack, IconButton, Box } from '@chakra-ui/react';
+import { HStack, IconButton, Spacer } from '@chakra-ui/react';
 
 import FilterItem from './filter-item';
 import { useFilterContext, defaultFilter } from './filter-provider';
@@ -21,7 +21,7 @@ function FilterContainer() {
       {filterList.map((filter) => (
         <FilterItem key={filter.name} filterData={filter} />
       ))}
-      <Box flexGrow='1' />
+      <Spacer />
       <IconButton
         aria-label='reset-filter'
         icon={<RepeatIcon />}

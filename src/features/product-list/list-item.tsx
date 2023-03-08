@@ -1,5 +1,5 @@
 import { CalendarIcon, StarIcon } from '@chakra-ui/icons';
-import { Image, Heading, Text, Flex, HStack, Box, IconButton } from '@chakra-ui/react';
+import { Image, Heading, Text, Flex, HStack, Box, IconButton, Spacer } from '@chakra-ui/react';
 import React from 'react';
 
 type MockItemType = {
@@ -40,10 +40,11 @@ function ListItem({ itemData }: Props) {
           <Heading size='sm' my='4px' flexGrow='1'>
             {itemData.name}
           </Heading>
-          <Flex justifyContent={'space-between'}>
+          <Flex>
             <HStack style={{ fontSize: '0.8rem' }}>
               <StarIcon /> <span>{itemData.spaceCategory}</span>
             </HStack>
+            <Spacer />
             <span style={{ fontWeight: 'bold' }}>
               ₩{itemData.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
             </span>
