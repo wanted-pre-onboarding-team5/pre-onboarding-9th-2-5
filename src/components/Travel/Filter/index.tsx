@@ -1,16 +1,8 @@
-import {
-  Flex,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItemOption,
-  Button,
-  MenuOptionGroup,
-  MenuDivider,
-} from '@chakra-ui/react';
+import { Flex, Menu, MenuButton, MenuList, Button, MenuDivider } from '@chakra-ui/react';
 
 import { useTravelDispatch } from '@/providers';
 
+import { FilterCheckboxGroup } from '@/components/Travel/Filter/FilterCheckboxGroup';
 import { FILTER_PRICE, FILTER_SPACE } from '@/constants/filter';
 
 export const Filter = () => {
@@ -37,21 +29,17 @@ export const Filter = () => {
           Filter
         </MenuButton>
         <MenuList minWidth='240px'>
-          <MenuOptionGroup title='Price' type='checkbox' onChange={handlePriceFilterChange}>
-            {FILTER_PRICE.map(({ name, min, max }, i) => (
-              <MenuItemOption key={i} value={`${min} ${max}`}>
-                {name}
-              </MenuItemOption>
-            ))}
-          </MenuOptionGroup>
+          <FilterCheckboxGroup
+            title={'Price'}
+            onChange={handlePriceFilterChange}
+            items={FILTER_PRICE}
+          />
           <MenuDivider />
-          <MenuOptionGroup title='Space' type='checkbox' onChange={handleSpaceFilterChange}>
-            {FILTER_SPACE.map((space, i) => (
-              <MenuItemOption key={i} value={space}>
-                {space}
-              </MenuItemOption>
-            ))}
-          </MenuOptionGroup>
+          <FilterCheckboxGroup
+            title={'Space'}
+            onChange={handleSpaceFilterChange}
+            items={FILTER_SPACE}
+          />
         </MenuList>
       </Menu>
     </Flex>
