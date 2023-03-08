@@ -19,7 +19,9 @@ export const ProductList = () => {
               desc={product.description}
               name={product.name}
               price={product.price}
-              category={product.spaceCategory}
+              space={product.spaceCategory}
+              maxPurchase={product.maximumPurchases}
+              date={product.registrationDate}
             />
           ))}
         </Grid>

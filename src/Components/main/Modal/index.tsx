@@ -8,9 +8,10 @@ import {
   ModalCloseButton,
   Button,
   useDisclosure,
+  Image,
 } from '@chakra-ui/react';
 
-export const ModalDiv = () => {
+export const ModalDiv = ({ img, desc, key, name, price, space, maxPurchase, date }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -19,9 +20,17 @@ export const ModalDiv = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>상세 정보</ModalHeader>
+          <ModalHeader>{name}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>{/* <Lorem count={2} /> */}</ModalBody>
+          <ModalBody>
+            <p>{key}</p>
+            <p>{desc}</p>
+            <Image src={img} alt={desc} />
+            <p>가격: {price}</p>
+            <p>지역: {space}</p>
+            <p>최대구매가능수량: {maxPurchase}</p>
+            <p>예약가능일자: {date}</p>
+          </ModalBody>
 
           <ModalFooter>
             <Button colorScheme='blue' mr={3}>
