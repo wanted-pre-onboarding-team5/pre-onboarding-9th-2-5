@@ -1,14 +1,9 @@
 import { RouterProvider } from 'react-router-dom';
 
-import { TravelProvider } from './providers';
 import { router } from './router';
 
 const App = () => {
-  return (
-    <TravelProvider>
-      <RouterProvider router={router} />
-    </TravelProvider>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
