@@ -1,10 +1,12 @@
-import Router from './routes';
+import Router from '@/routes';
+
+import Layout from '@/features/layout/Layout';
 
 function App() {
   return (
-    <div className='App'>
+    <Layout>
       <Router />
-    </div>
+    </Layout>
   );
 }
 
