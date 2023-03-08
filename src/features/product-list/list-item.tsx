@@ -1,8 +1,20 @@
 import { CalendarIcon, StarIcon } from '@chakra-ui/icons';
-import { Image, Heading, Text, Flex, HStack, Box, IconButton, Spacer } from '@chakra-ui/react';
+import {
+  Image,
+  Heading,
+  Text,
+  Flex,
+  HStack,
+  Box,
+  IconButton,
+  Spacer,
+  useDisclosure,
+} from '@chakra-ui/react';
 import React from 'react';
 
-type MockItemType = {
+import ListItemModal from './list-item-modal';
+
+export type MockItemType = {
   idx: number;
   name: string;
   mainImage: string;
@@ -18,8 +30,10 @@ type Props = {
 };
 
 function ListItem({ itemData }: Props) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <Box width={'100%'} position='relative'>
+    <Box width={'100%'} position='relative' onClick={onOpen}>
       <Flex
         css={`
           border: 1px solid #efefef;
@@ -67,6 +81,7 @@ function ListItem({ itemData }: Props) {
         aria-label='reservation-icon'
         icon={<CalendarIcon />}
       />
+      <ListItemModal isOpen={isOpen} onClose={onClose} itemData={itemData} />
     </Box>
   );
 }
