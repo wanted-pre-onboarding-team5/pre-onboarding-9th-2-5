@@ -18,9 +18,20 @@ import { mockDataType } from '@/types/type';
 export const MockItem = ({ mockdata }: { mockdata: mockDataType }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { idx, mainImage, name, price, spaceCategory } = mockdata;
+
+  //예약하기 버튼
   const reservationClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    if (!localStorage.getItem('reserv_item_info')) {
+      localStorage.setItem('reserv_item_info', JSON.stringify([]));
+    }
+    const reserveItemInfo: mockDataType[] = JSON.parse(
+      localStorage.getItem('reserv_item_info') || '[]',
+    );
+    reserveItemInfo.push(mockdata);
+    localStorage.setItem('reserv_item_info', JSON.stringify(reserveItemInfo));
   };
+
   return (
     <>
       <Card
