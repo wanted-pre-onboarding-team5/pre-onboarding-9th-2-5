@@ -8,9 +8,11 @@ import {
   CardBody,
   CardFooter,
   useDisclosure,
+  Flex,
 } from '@chakra-ui/react';
 
 import { TravelItemModal } from './Modal';
+import { ReservationButton } from './ReservationButton';
 
 export const TravelItem = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -18,8 +20,8 @@ export const TravelItem = (props) => {
 
   return (
     <>
-      <Card maxW='sm' onClick={onOpen}>
-        <CardBody>
+      <Card maxW='sm'>
+        <CardBody onClick={onOpen} cursor='pointer'>
           <Image src={mainImage} alt={name} borderRadius='lg' />
           <Stack mt='6' spacing='3'>
             <Heading size='md'>{name}</Heading>
@@ -29,11 +31,16 @@ export const TravelItem = (props) => {
           </Stack>
         </CardBody>
         <CardFooter pt='0' justifyContent='space-between'>
-          <Box p='2' bg='gray.200' borderRadius='base'>
-            {spaceCategory}
-          </Box>
-          <Box p='2' bg='blue.200' borderRadius='base'>
-            {idx}
+          <Flex>
+            <Box p='2' bg='blue.200' borderRadius='base'>
+              {idx}
+            </Box>
+            <Box p='2' bg='gray.200' borderRadius='base'>
+              {spaceCategory}
+            </Box>
+          </Flex>
+          <Box>
+            <ReservationButton itemData={props} />
           </Box>
         </CardFooter>
       </Card>
