@@ -9,13 +9,18 @@ import {
   Button,
   useDisclosure,
   Image,
+  Box,
 } from '@chakra-ui/react';
 
-export const ModalDiv = ({ img, desc, key, name, price, space, maxPurchase, date }) => {
+import { Props } from '../product';
+
+export const ModalDiv = ({ img, desc, idx, name, price, space, maxPurchase, date }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Button onClick={onOpen}>상세정보</Button>
+      <Box display='flex' alignItems='center' justifyContent='center' h='60px'>
+        <Button onClick={onOpen}>상세정보</Button>
+      </Box>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -23,7 +28,7 @@ export const ModalDiv = ({ img, desc, key, name, price, space, maxPurchase, date
           <ModalHeader>{name}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <p>{key}</p>
+            <p>{idx}</p>
             <p>{desc}</p>
             <Image src={img} alt={desc} />
             <p>가격: {price}</p>

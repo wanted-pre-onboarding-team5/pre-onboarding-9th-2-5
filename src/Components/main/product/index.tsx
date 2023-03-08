@@ -1,23 +1,36 @@
-import { Box, Spacer, Image } from '@chakra-ui/react';
+import { Box, Spacer, Image, Text } from '@chakra-ui/react';
 
 import { ModalDiv } from '../Modal';
 
-export const Product = ({ img, desc, key, name, price, space, maxPurchase, date }) => {
+export type Props = {
+  img: string;
+  desc: string;
+  idx: number;
+  name: string;
+  price: number;
+  space: string;
+  maxPurchase: number;
+  date: string;
+};
+
+export const Product = ({ img, desc, idx, name, price, space, maxPurchase, date }: Props) => {
   return (
     <Box display='flex' alignItems='center' justifyContent='center'>
-      <Box maxW='lg' borderWidth='1px' borderRadius='lg' m='5'>
+      <Box maxW='lg' borderWidth='1px' borderRadius='lg' m='3'>
         <Image src={img} alt={desc} />
-        {key}
-        <Box display='flex' alignItems='center' justifyContent='center' h='50px'>
+        <Box display='flex' alignItems='center' justifyContent='center' h='50px' fontSize='2sm'>
           {name}
         </Box>
         <Box>
-          <Box m='1'>{price}</Box>
-          <Box m='1'>{space}</Box>
+          <Text m='1' align='center'>
+            {price}
+            <Spacer />
+            {space}
+          </Text>
         </Box>
         <Spacer />
         <ModalDiv
-          key={key}
+          idx={idx}
           img={img}
           desc={desc}
           name={name}

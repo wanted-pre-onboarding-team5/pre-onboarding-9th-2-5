@@ -1,21 +1,23 @@
-import { Select, Flex, Box } from '@chakra-ui/react';
-import { useState } from 'react';
+import { Select, Flex, Box, Text } from '@chakra-ui/react';
 
-export const Filter = () => {
-  const [priceFilter, setPriceFilter] = useState();
-  const [spaceFilter, setSpaceFilter] = useState();
+export type Props = {
+  priceSelect: string;
+  setPriceSelect: React.Dispatch<React.SetStateAction<string>>;
+  spaceSelect: string;
+  setSpaceSelect: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export const Filter = ({ priceSelect, setPriceSelect, spaceSelect, setSpaceSelect }: Props) => {
   return (
     <Box display='flex' alignItems='center' justifyContent='center'>
       <Box>
-        <p>필터</p>
-        {priceFilter}
-        {spaceFilter}
+        <Text align='center'>필터</Text>
         <Flex>
           <Select
             w={180}
             placeholder='가격'
-            value={priceFilter}
-            onChange={(e) => setPriceFilter(e.target.value)}
+            value={priceSelect}
+            onChange={(e) => setPriceSelect(e.target.value)}
           >
             <option value='less10000'>~ 10,000</option>
             <option value='10000and20000'>10,000 ~ 20,000</option>
@@ -24,8 +26,8 @@ export const Filter = () => {
           <Select
             w={180}
             placeholder='지역'
-            value={spaceFilter}
-            onChange={(e) => setSpaceFilter(e.target.value)}
+            value={spaceSelect}
+            onChange={(e) => setSpaceSelect(e.target.value)}
           >
             <option value='gangwon'>강원</option>
             <option value='seoul'>서울</option>
