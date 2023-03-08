@@ -5,6 +5,7 @@ import { ProductItem } from './ProductItem';
 import { ProductModal } from './ProductModal';
 
 import { Product } from '@/apis/travelApi.type';
+import useCart from '@/hooks/useCart';
 
 export const ProductList = ({ Products }: { Products: Product[] }) => {
   const [modalData, setModalData] = useState<Product>({
@@ -18,9 +19,15 @@ export const ProductList = ({ Products }: { Products: Product[] }) => {
     registrationDate: '',
   });
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { addItemToCart } = useCart();
   return (
     <>
-      <ProductModal isOpen={isOpen} onClose={onClose} product={modalData} />
+      <ProductModal
+        isOpen={isOpen}
+        onClose={onClose}
+        product={modalData}
+        onReservationClick={() => addItemToCart(modalData)}
+      />
       <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(300px, 1fr))'>
         {Products.map((product) => {
           return (
@@ -31,6 +38,7 @@ export const ProductList = ({ Products }: { Products: Product[] }) => {
                 setModalData(product);
                 onOpen();
               }}
+              onReservationClick={() => addItemToCart(product)}
             />
           );
         })}

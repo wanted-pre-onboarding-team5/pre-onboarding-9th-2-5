@@ -17,9 +17,10 @@ import { Product } from '@/apis/travelApi.type';
 interface ProductItemProps {
   product: Product;
   onOpen: () => void;
+  onReservationClick: () => void;
 }
 
-export const ProductItem = ({ product, onOpen }: ProductItemProps) => {
+export const ProductItem = ({ product, onOpen, onReservationClick }: ProductItemProps) => {
   const { idx, name, mainImage, spaceCategory, price } = product;
   return (
     <Card maxW='sm'>
@@ -47,7 +48,7 @@ export const ProductItem = ({ product, onOpen }: ProductItemProps) => {
       </CardBody>
       <Divider />
       <CardFooter>
-        <Button width='350px' variant='solid' colorScheme='blue'>
+        <Button width='350px' variant='solid' colorScheme='blue' onClick={onReservationClick}>
           예약
         </Button>
       </CardFooter>

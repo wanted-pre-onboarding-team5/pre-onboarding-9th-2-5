@@ -17,9 +17,15 @@ interface ProductModalProps {
   isOpen: boolean;
   onClose: () => void;
   product: Product;
+  onReservationClick: () => void;
 }
 
-export const ProductModal = ({ isOpen, onClose, product }: ProductModalProps) => {
+export const ProductModal = ({
+  isOpen,
+  onClose,
+  product,
+  onReservationClick,
+}: ProductModalProps) => {
   const {
     idx,
     name,
@@ -76,10 +82,18 @@ export const ProductModal = ({ isOpen, onClose, product }: ProductModalProps) =>
           </Box>
         </Box>
         <ModalFooter>
-          <Button colorScheme='blue' mr={3} onClick={onClose}>
+          <Button variant='ghost' mr={3} onClick={onClose}>
             Close
           </Button>
-          <Button variant='ghost'>Secondary Action</Button>
+          <Button
+            colorScheme='blue'
+            onClick={() => {
+              onReservationClick();
+              onClose();
+            }}
+          >
+            예약
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
