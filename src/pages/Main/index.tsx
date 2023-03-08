@@ -1,3 +1,15 @@
+import { useLoaderData } from 'react-router-dom';
+
+import { Product } from '@/apis/travelApi.type';
+import { Layout } from '@/components/common/Layout';
+import { ProductList } from '@/components/Main/ProductList';
+
 export const Main = () => {
-  return <>main</>;
+  const loadedProductData = useLoaderData() as Product[];
+
+  return (
+    <Layout>
+      <ProductList Products={loadedProductData} />
+    </Layout>
+  );
 };

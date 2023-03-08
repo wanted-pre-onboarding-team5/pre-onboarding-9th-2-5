@@ -4,7 +4,7 @@ export interface Product {
   mainImage: string;
   description: string;
   spaceCategory: string;
-  place: number;
+  price: number;
   maximumPurchases: number;
   registrationDate: string;
 }
