@@ -5,8 +5,8 @@ import FilterItem from './filter-item';
 import { useFilterContext, defaultFilter } from './filter-provider';
 
 const filterList = [
-  { name: 'space', items: ['서울', '강원', '대구', '부산', '제주'], icon: <StarIcon /> },
-  { name: 'price', items: ['10000이하', '10000~30000', '30000이상'], icon: <SunIcon /> },
+  { name: 'spaceCategory', items: ['서울', '강원', '대구', '부산', '제주'], icon: <StarIcon /> },
+  { name: 'price', items: ['0~10000', '10000~20000', '20000~30000'], icon: <SunIcon /> },
 ];
 
 function FilterContainer() {

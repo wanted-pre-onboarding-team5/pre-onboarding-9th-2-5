@@ -2,7 +2,7 @@ import React from 'react';
 
 interface FilterType {
   [key: string]: string;
-  space: string;
+  spaceCategory: string;
   price: string;
 }
 
@@ -17,7 +17,7 @@ type Props = {
 
 const FilterContext = React.createContext<FilterContextType>({} as FilterContextType);
 export const useFilterContext = () => React.useContext(FilterContext);
-export const defaultFilter: FilterType = { space: '', price: '' };
+export const defaultFilter: FilterType = { spaceCategory: '', price: '' };
 
 function FilterProvider({ children }: Props) {
   const [filter, setFilter] = React.useState(defaultFilter);
