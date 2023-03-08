@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { PATH_ROUTE } from '@/constants';
 import { Main, Reservations, Error, Root } from '@/pages';
 
-import { rootLoader } from './loaders';
+import { rootLoader, mainLoader } from './loaders';
 
 const routes = [
   {
@@ -19,6 +19,7 @@ const routes = [
         path: PATH_ROUTE.main,
         element: <Main />,
         errorElement: <Error />,
+        loader: mainLoader,
       },
       {
         path: PATH_ROUTE.reservations,

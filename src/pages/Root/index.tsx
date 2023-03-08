@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import { Outlet } from 'react-router-dom';
 
 import { Navbar } from '@/components/Navbar';
@@ -5,10 +6,10 @@ import { Navbar } from '@/components/Navbar';
 export const Root = () => {
   return (
     <>
-      <div>
-        <Navbar />
+      <Navbar />
+      <Box mx='150' my='50'>
         <Outlet />
-      </div>
+      </Box>
     </>
   );
 };
