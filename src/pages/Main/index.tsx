@@ -9,7 +9,7 @@ export const Main = () => {
 
   return (
     <Layout>
-      <ProductList Products={loadedProductData} />
+      <ProductList products={loadedProductData} />
     </Layout>
   );
 };
