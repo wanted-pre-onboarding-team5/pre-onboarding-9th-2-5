@@ -5,8 +5,13 @@ import { Main } from '@/pages';
 import { mainLoader } from './loaders/mainLoader';
 
 import { PATH_ROUTE } from '@/constants/path';
+import { Root } from '@/pages/Root';
 
 const routes: RouteObject[] = [
+  {
+    path: '/',
+    element: <Root />,
+  },
   {
     path: PATH_ROUTE.main,
     element: <Main />,
