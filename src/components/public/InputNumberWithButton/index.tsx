@@ -1,9 +1,15 @@
 import { Button, HStack, Input, useNumberInput } from '@chakra-ui/react';
 
-const InputNumberWithButton = ({ handleQuantity }: { handleQuantity: (value: number) => void }) => {
+const InputNumberWithButton = ({
+  count,
+  handleQuantity,
+}: {
+  count: number;
+  handleQuantity: (value: number) => void;
+}) => {
   const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } = useNumberInput({
     step: 1,
-    defaultValue: 1,
+    defaultValue: count,
     min: 1,
     precision: 0,
   });
