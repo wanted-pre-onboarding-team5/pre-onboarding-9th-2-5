@@ -1,6 +1,6 @@
 export const FILTER_PRICE = [
   {
-    name: '1만 원 이하',
+    name: '1만 원 미만',
     idx: 0,
   },
   {

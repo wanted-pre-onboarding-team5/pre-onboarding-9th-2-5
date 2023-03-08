@@ -7,7 +7,6 @@ const initialState = {
   filteredData: [],
   priceFilter: [],
   spaceFilter: [],
-  isFilterSelected: false,
 };
 
 const TravelStateContext = createContext(undefined);

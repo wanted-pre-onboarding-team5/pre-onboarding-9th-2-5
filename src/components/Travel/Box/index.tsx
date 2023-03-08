@@ -7,7 +7,7 @@ import { TravelItem } from '@/components/Travel/Item';
 
 export const TravelItemBox = ({ travelData }) => {
   const travelDispatch = useTravelDispatch();
-  const { data, filteredData, isFilterSelected } = useTravelState();
+  const { filteredData } = useTravelState();
 
   useEffect(() => {
     travelDispatch({
@@ -16,17 +16,10 @@ export const TravelItemBox = ({ travelData }) => {
     });
   }, []);
 
-  const getTravelData = () => {
-    if (isFilterSelected || filteredData.length) {
-      return filteredData;
-    }
-    return data;
-  };
-
   return (
     <>
       <Grid templateColumns='repeat(4, 1fr)' gap='3'>
-        {getTravelData().map((props) => (
+        {filteredData.map((props) => (
           <TravelItem key={props.idx} {...props} />
         ))}
       </Grid>

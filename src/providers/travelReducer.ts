@@ -1,3 +1,5 @@
+import { filterTravelItems } from '@/utils/filter';
+
 export const travelReducer = (state, action) => {
   switch (action.type) {
     case 'init': {
@@ -10,38 +12,25 @@ export const travelReducer = (state, action) => {
       };
     }
     case 'priceFilter': {
-      const { data, filteredData, spaceFilter } = state;
-      const priceFilter = action.payload.map((filter) => {
-        const [min, max] = filter.split(' ').map(Number);
-        return { min, max };
-      });
-      const standardData = spaceFilter.length ? filteredData : data;
-      const newFilteredData = standardData.filter(({ price }) => {
-        return priceFilter.some(({ min, max }) => {
-          return price >= min && price < max;
-        });
-      });
+      const { data, spaceFilter } = state;
+      const priceFilter = action.payload;
+      const filteredData = filterTravelItems(data, spaceFilter, priceFilter);
 
       return {
         ...state,
         priceFilter,
-        filteredData: newFilteredData,
-        isFilterSelected: priceFilter.length + spaceFilter.length > 0,
+        filteredData,
       };
     }
     case 'spaceFilter': {
-      const { data, filteredData, priceFilter } = state;
+      const { data, priceFilter } = state;
       const spaceFilter = action.payload;
-      const standardData = priceFilter.length ? filteredData : data;
-      const newFilteredData = standardData.filter(({ spaceCategory }) => {
-        return spaceFilter.includes(spaceCategory);
-      });
+      const filteredData = filterTravelItems(data, spaceFilter, priceFilter);
 
       return {
         ...state,
         spaceFilter,
-        filteredData: newFilteredData,
-        isFilterSelected: priceFilter.length + spaceFilter.length > 0,
+        filteredData,
       };
     }
     default:
