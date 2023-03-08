@@ -6,7 +6,6 @@ import {
   Text,
   Box,
   CardBody,
-  CardFooter,
   useDisclosure,
   Flex,
 } from '@chakra-ui/react';
@@ -21,28 +20,26 @@ export const TravelItem = (props) => {
   return (
     <>
       <Card maxW='sm'>
-        <CardBody onClick={onOpen} cursor='pointer'>
-          <Image src={mainImage} alt={name} borderRadius='lg' />
-          <Stack mt='6' spacing='3'>
-            <Heading size='md'>{name}</Heading>
-            <Text color='blue.600' fontSize='2xl'>
-              {price}원
-            </Text>
+        <CardBody onClick={onOpen} cursor='pointer' p='3'>
+          <Image src={mainImage} alt={name} borderRadius='md' />
+          <Text pt='2' color='gray.500' fontSize='xs' borderRadius='base'>
+            No. {idx}
+          </Text>
+          <Stack mt='2' spacing='2'>
+            <Heading size='sm' fontWeight='bold' mb='3'>
+              {name}
+            </Heading>
           </Stack>
-        </CardBody>
-        <CardFooter pt='0' justifyContent='space-between'>
-          <Flex>
-            <Box p='2' bg='blue.200' borderRadius='base'>
-              {idx}
-            </Box>
-            <Box p='2' bg='gray.200' borderRadius='base'>
+          <Flex justifyContent='space-between' alignItems='center'>
+            <Text color='blue.600' fontSize='lg' fontWeight='bold'>
+              ₩{price}
+            </Text>
+            <Box p='1.5' bg='gray.200' borderRadius='xl'>
               {spaceCategory}
             </Box>
           </Flex>
-          <Box>
-            <ReservationButton itemData={props} />
-          </Box>
-        </CardFooter>
+          <ReservationButton itemData={props} />
+        </CardBody>
       </Card>
       <TravelItemModal open={isOpen} close={onClose} itemData={props} />
     </>

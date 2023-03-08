@@ -15,7 +15,16 @@ export const ReservationButton = ({ itemData }) => {
 
   return (
     <>
-      <Button colorScheme='blue' mr={3} onClick={handleReservationClick}>
+      <Button
+        colorScheme='facebook'
+        _hover={{
+          bgGradient: 'linear(to-r, red.300, yellow.300)',
+        }}
+        color='white'
+        mr={3}
+        onClick={handleReservationClick}
+        fontWeight='bold'
+      >
         예약하기
       </Button>
     </>

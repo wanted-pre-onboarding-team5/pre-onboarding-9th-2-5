@@ -38,8 +38,8 @@ export const TravelItemModal = ({ open, close, itemData }) => {
             <Text fontSize='lg' m='5'>
               {description}
             </Text>
-            <Text color='blue.600' fontSize='2xl' textAlign='center'>
-              {price}원
+            <Text color='blue.600' fontSize='lg' textAlign='center' fontWeight='bold'>
+              ₩{price}
             </Text>
             <Text fontSize='sm'>최대 구매 수량: {maximumPurchases}</Text>
             <Text fontSize='sm'>등록 날짜: {registrationDate}</Text>

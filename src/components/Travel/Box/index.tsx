@@ -18,7 +18,7 @@ export const TravelItemBox = ({ travelData }) => {
 
   return (
     <>
-      <Grid templateColumns='repeat(4, 1fr)' gap='3'>
+      <Grid templateColumns='repeat(4, 1fr)' gap='4'>
         {filteredData.map((props) => (
           <TravelItem key={props.idx} {...props} />
         ))}
