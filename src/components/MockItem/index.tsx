@@ -22,14 +22,26 @@ export const MockItem = ({ mockdata }: { mockdata: mockDataType }) => {
   //예약하기 버튼
   const reservationClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+
     if (!localStorage.getItem('reserv_item_info')) {
       localStorage.setItem('reserv_item_info', JSON.stringify([]));
     }
-    const reserveItemInfo: mockDataType[] = JSON.parse(
+    const reserveItemArray: mockDataType[] = JSON.parse(
       localStorage.getItem('reserv_item_info') || '[]',
     );
-    reserveItemInfo.push(mockdata);
-    localStorage.setItem('reserv_item_info', JSON.stringify(reserveItemInfo));
+    reserveItemArray.push(mockdata);
+
+    const isDuplicate = new Set();
+    const noDuplicateItem = reserveItemArray.filter((info) => {
+      const key = `${info.idx}-${info.name}`;
+      if (isDuplicate.has(key)) {
+        return false;
+      }
+      isDuplicate.add(key);
+      return true;
+    });
+
+    localStorage.setItem('reserv_item_info', JSON.stringify(noDuplicateItem));
   };
 
   return (
