@@ -20,7 +20,7 @@ module.exports = {
   rules: {
     'no-var': 'error',
     'no-multiple-empty-lines': 'error',
-    'no-console': 'warn',
+    'no-console': ['warn', { allow: ['error'] }],
     eqeqeq: 'error',
     'dot-notation': 'error',
     'no-unused-vars': 'error',
