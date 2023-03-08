@@ -10,7 +10,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-import { TravelItemModal } from './TravelItemModal';
+import { TravelItemModal } from './Modal';
 
 export const TravelItem = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -37,7 +37,7 @@ export const TravelItem = (props) => {
           </Box>
         </CardFooter>
       </Card>
-      <TravelItemModal open={isOpen} close={onClose} {...props} />
+      <TravelItemModal open={isOpen} close={onClose} itemData={props} />
     </>
   );
 };

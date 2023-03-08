@@ -13,7 +13,11 @@ import {
   Flex,
 } from '@chakra-ui/react';
 
-export const TravelItemModal = (props) => {
+import { getLocalStorageItem, setLocalStorageItem } from '@/utils';
+
+import { RESERVATIONS_KEY } from '@/constants/storage';
+
+export const TravelItemModal = ({ open, close, itemData }) => {
   const {
     idx,
     name,
@@ -23,10 +27,19 @@ export const TravelItemModal = (props) => {
     description,
     maximumPurchases,
     registrationDate,
-    open,
-    close,
-  } = props;
-  const handleReservationClick = () => {};
+  } = itemData;
+
+  const handleReservationClick = () => {
+    const reservations = getLocalStorageItem(RESERVATIONS_KEY) || [];
+    const filteredReservations = reservations.filter((reservation) => reservation.idx !== idx);
+    // 로직을 다시 차근차근 세운 후 토스트 알람을 만들기
+    if (filteredReservations.length < reservations) {
+      console.log('장바구니에 이미 담겨있는 상품이에요!');
+    } else {
+      console.log('상품이 장바구니에 잘 담겼어요!');
+    }
+    setLocalStorageItem(RESERVATIONS_KEY, [...filteredReservations, itemData]);
+  };
 
   return (
     <>

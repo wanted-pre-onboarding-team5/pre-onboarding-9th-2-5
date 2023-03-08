@@ -1,6 +1,6 @@
 import { Grid } from '@chakra-ui/react';
 
-import { TravelItem } from '@/components/TravelItem';
+import { TravelItem } from '@/components/Travel/Item';
 
 export const TravelItemBox = ({ data }) => {
   return (

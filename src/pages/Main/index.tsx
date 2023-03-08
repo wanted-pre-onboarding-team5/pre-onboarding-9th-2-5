@@ -3,8 +3,8 @@ import { useLoaderData } from 'react-router-dom';
 
 import { useTravelDispatch, useTravelState } from '@/providers';
 
-import { Filter } from '@/components/Filter';
-import { TravelItemBox } from '@/components/TravelItemBox';
+import { TravelItemBox } from '@/components/Travel/Box';
+import { Filter } from '@/components/Travel/Filter';
 import { TravelItemType } from '@/types/TravelItemType';
 
 export const Main = () => {
