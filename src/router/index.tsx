@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { PATH_ROUTE } from '@/constants';
 import { Root, Main, Error } from '@/pages';
 
-import { rootLoader } from './loaders/rootLoader';
+import { rootLoader } from '@/router/loaders';
 
 const routes = [
   {
