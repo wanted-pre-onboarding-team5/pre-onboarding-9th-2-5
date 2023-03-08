@@ -14,10 +14,16 @@ import {
 
 import { Product } from '@/apis/travelApi.type';
 
-export const ProductItem = ({ idx, name, mainImage, spaceCategory, price }: Product) => {
+interface ProductItemProps {
+  product: Product;
+  onOpen: () => void;
+}
+
+export const ProductItem = ({ product, onOpen }: ProductItemProps) => {
+  const { idx, name, mainImage, spaceCategory, price } = product;
   return (
     <Card maxW='sm'>
-      <CardBody>
+      <CardBody onClick={onOpen}>
         <Text as='i' fontSize='xl'>
           {idx}
         </Text>
