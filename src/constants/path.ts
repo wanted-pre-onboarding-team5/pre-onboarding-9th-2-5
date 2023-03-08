@@ -3,5 +3,5 @@ export const PATH_ROUTE: Readonly<{ [key: string]: string }> = Object.freeze({
 });
 
 export const PATH_API: Readonly<{ [key: string]: string }> = Object.freeze({
-  product: '@/mocks/data.json',
+  product: 'src/mocks/data.json',
 });
