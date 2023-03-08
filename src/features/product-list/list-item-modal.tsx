@@ -10,8 +10,11 @@ import {
   ModalCloseButton,
   Flex,
   HStack,
+  useToast,
 } from '@chakra-ui/react';
 import React from 'react';
+
+import reservationService from '../reservation/reservation-service';
 
 import { MockItemType } from './list-item';
 
@@ -22,6 +25,7 @@ type Props = {
 };
 
 function ListItemModal({ isOpen, onClose, itemData }: Props) {
+  const toast = useToast();
   return (
     <Modal isCentered isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -72,6 +76,24 @@ function ListItemModal({ isOpen, onClose, itemData }: Props) {
                 background-color: rgb(191 219 254);
               }
             `}
+            onClick={() => {
+              const { message } = reservationService.reserveItem(itemData);
+              if (message === 'SUCCESS') {
+                toast({
+                  title: '장바구니 담기 완료',
+                  status: 'success',
+                  duration: 1000,
+                  isClosable: true,
+                });
+              } else {
+                toast({
+                  title: '이미 있는 상품입니다',
+                  status: 'error',
+                  duration: 1000,
+                  isClosable: true,
+                });
+              }
+            }}
           >
             장바구니 담기
           </Button>

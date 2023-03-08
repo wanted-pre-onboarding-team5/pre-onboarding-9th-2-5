@@ -9,8 +9,11 @@ import {
   IconButton,
   Spacer,
   useDisclosure,
+  useToast,
 } from '@chakra-ui/react';
 import React from 'react';
+
+import reservationService from '../reservation/reservation-service';
 
 import ListItemModal from './list-item-modal';
 
@@ -31,10 +34,12 @@ type Props = {
 
 function ListItem({ itemData }: Props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
 
   return (
-    <Box width={'100%'} position='relative' onClick={onOpen}>
+    <Box width={'100%'} position='relative'>
       <Flex
+        onClick={onOpen}
         css={`
           border: 1px solid #efefef;
           border-radius: 8px;
@@ -80,6 +85,24 @@ function ListItem({ itemData }: Props) {
         variant={'unstyled'}
         aria-label='reservation-icon'
         icon={<CalendarIcon />}
+        onClick={() => {
+          const { message } = reservationService.reserveItem(itemData);
+          if (message === 'SUCCESS') {
+            toast({
+              title: '장바구니 담기 완료',
+              status: 'success',
+              duration: 1000,
+              isClosable: true,
+            });
+          } else {
+            toast({
+              title: '이미 있는 상품입니다',
+              status: 'error',
+              duration: 1000,
+              isClosable: true,
+            });
+          }
+        }}
       />
       <ListItemModal isOpen={isOpen} onClose={onClose} itemData={itemData} />
     </Box>
