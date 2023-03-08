@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 import { useTravelDispatch, useTravelState } from '@/providers';
@@ -10,19 +10,26 @@ import { TravelItemType } from '@/types/TravelItemType';
 export const Main = () => {
   const travelData = useLoaderData() as TravelItemType[];
   const travelDispatch = useTravelDispatch();
-  const { data, filteredData } = useTravelState();
+  const { data, filteredData, isFilterSelected } = useTravelState();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     travelDispatch({
       type: 'init',
       payload: travelData,
     });
   }, []);
 
+  const getTravelData = () => {
+    if (isFilterSelected || filteredData.length) {
+      return filteredData;
+    }
+    return data;
+  };
+
   return (
     <>
       <Filter />
-      <TravelItemBox data={filteredData.length ? filteredData : data} />
+      <TravelItemBox data={getTravelData()} />
     </>
   );
 };

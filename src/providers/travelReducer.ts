@@ -10,20 +10,38 @@ export const travelReducer = (state, action) => {
       };
     }
     case 'priceFilter': {
+      const { data, filteredData, spaceFilter } = state;
+      const priceFilter = action.payload.map((filter) => {
+        const [min, max] = filter.split(' ').map(Number);
+        return { min, max };
+      });
+      const standardData = spaceFilter.length ? filteredData : data;
+      const newFilteredData = standardData.filter(({ price }) => {
+        return priceFilter.some(({ min, max }) => {
+          return price >= min && price < max;
+        });
+      });
+
       return {
         ...state,
-        priceFilter: action.payload,
+        priceFilter,
+        filteredData: newFilteredData,
+        isFilterSelected: priceFilter.length + spaceFilter.length > 0,
       };
     }
     case 'spaceFilter': {
-      const { data } = state;
+      const { data, filteredData, priceFilter } = state;
       const spaceFilter = action.payload;
-      const filteredData = data.filter((v) => spaceFilter.includes(v.spaceCategory));
+      const standardData = priceFilter.length ? filteredData : data;
+      const newFilteredData = standardData.filter(({ spaceCategory }) => {
+        return spaceFilter.includes(spaceCategory);
+      });
 
       return {
         ...state,
         spaceFilter,
-        filteredData,
+        filteredData: newFilteredData,
+        isFilterSelected: priceFilter.length + spaceFilter.length > 0,
       };
     }
     default:

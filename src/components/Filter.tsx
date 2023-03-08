@@ -1,4 +1,5 @@
 import {
+  Flex,
   Menu,
   MenuButton,
   MenuList,
@@ -27,20 +28,19 @@ export const Filter = () => {
       type: 'spaceFilter',
       payload: filterArr,
     });
-    console.log(filterArr);
   };
 
   return (
-    <>
+    <Flex justifyContent='flex-end' mb='2'>
       <Menu closeOnSelect={false}>
         <MenuButton as={Button} colorScheme='blue'>
           Filter
         </MenuButton>
         <MenuList minWidth='240px'>
           <MenuOptionGroup title='Price' type='checkbox' onChange={handlePriceFilterChange}>
-            {FILTER_PRICE.map((price, i) => (
-              <MenuItemOption key={i} value={price}>
-                {price}
+            {FILTER_PRICE.map(({ name, min, max }, i) => (
+              <MenuItemOption key={i} value={`${min} ${max}`}>
+                {name}
               </MenuItemOption>
             ))}
           </MenuOptionGroup>
@@ -54,6 +54,6 @@ export const Filter = () => {
           </MenuOptionGroup>
         </MenuList>
       </Menu>
-    </>
+    </Flex>
   );
 };
