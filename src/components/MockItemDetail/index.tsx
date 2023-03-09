@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 
 import { mockDataType } from '@/types/type';
-// spaceCategory, price, maximumPurchases, registrationDate
+
 export const MockItemDetail = ({
   isOpen,
   onClose,
@@ -34,6 +34,30 @@ export const MockItemDetail = ({
     description,
     registrationDate,
   } = mockdata;
+
+  const reservationClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+
+    if (!localStorage.getItem('reserv_item_info')) {
+      localStorage.setItem('reserv_item_info', JSON.stringify([]));
+    }
+    const reserveItemArray: mockDataType[] = JSON.parse(
+      localStorage.getItem('reserv_item_info') || '[]',
+    );
+    reserveItemArray.push(mockdata);
+
+    const isDuplicate = new Set();
+    const noDuplicateItem = reserveItemArray.filter((info) => {
+      const key = `${info.idx}-${info.name}`;
+      if (isDuplicate.has(key)) {
+        return false;
+      }
+      isDuplicate.add(key);
+      return true;
+    });
+
+    localStorage.setItem('reserv_item_info', JSON.stringify(noDuplicateItem));
+  };
   return (
     <>
       <Modal isOpen={isOpen} size='2xl' onClose={onClose}>
@@ -64,8 +88,36 @@ export const MockItemDetail = ({
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blackAlpha' mr={3} onClick={onClose}>
-              Close
+            <Button
+              bg='black'
+              color='whiteAlpha.800'
+              zIndex='10'
+              border='1px'
+              _hover={{
+                background: 'white',
+                color: 'black',
+                transition: 'background-color 200ms linear',
+                cursor: 'pointer',
+              }}
+              mr='2'
+              onClick={reservationClickHandler}
+            >
+              예약하기
+            </Button>
+            <Button
+              bg='black'
+              color='whiteAlpha.800'
+              zIndex='10'
+              border='1px'
+              _hover={{
+                background: 'white',
+                color: 'black',
+                transition: 'background-color 200ms linear',
+                cursor: 'pointer',
+              }}
+              onClick={onClose}
+            >
+              닫기
             </Button>
           </ModalFooter>
         </ModalContent>
