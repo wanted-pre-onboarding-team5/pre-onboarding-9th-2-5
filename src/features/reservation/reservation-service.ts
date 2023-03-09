@@ -1,12 +1,15 @@
 import { MockItemType } from '../product-list/list-item';
 
 class reservationService {
-  static reserveItem(item: MockItemType) {
+  static reserveItem(item: MockItemType, amount: number) {
     if (this.checkIsDuplicatedItem(item.idx)) {
       return { message: 'FAIL' };
     } else {
       const reservedList = this.getReservedList();
-      localStorage.setItem('RESERVATION', JSON.stringify([...reservedList, item]));
+      localStorage.setItem(
+        'RESERVATION',
+        JSON.stringify([...reservedList, { ...item, reservedAmount: amount }]),
+      );
       return { message: 'SUCCESS' };
     }
   }

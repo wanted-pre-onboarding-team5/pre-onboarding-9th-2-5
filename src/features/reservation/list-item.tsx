@@ -22,7 +22,7 @@ type Props = {
 
 function ListItem({ itemData, refetch }: Props) {
   const updateAmount = (newAmount: number) => {
-    const newData = { ...itemData, reservedData: newAmount };
+    const newData = { ...itemData, reservedAmount: newAmount };
     reservationService.updateItem(newData);
     refetch();
   };

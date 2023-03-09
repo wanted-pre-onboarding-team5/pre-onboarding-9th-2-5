@@ -1,19 +1,6 @@
-import { CalendarIcon, StarIcon } from '@chakra-ui/icons';
-import {
-  Image,
-  Heading,
-  Text,
-  Flex,
-  HStack,
-  Box,
-  IconButton,
-  Spacer,
-  useDisclosure,
-  useToast,
-} from '@chakra-ui/react';
+import { StarIcon } from '@chakra-ui/icons';
+import { Image, Heading, Text, Flex, HStack, Box, Spacer, useDisclosure } from '@chakra-ui/react';
 import React from 'react';
-
-import reservationService from '../reservation/reservation-service';
 
 import ListItemModal from './list-item-modal';
 
@@ -34,7 +21,6 @@ type Props = {
 
 function ListItem({ itemData }: Props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const toast = useToast();
 
   return (
     <Box width={'100%'} position='relative'>
@@ -70,40 +56,6 @@ function ListItem({ itemData }: Props) {
           </Flex>
         </Flex>
       </Flex>
-      <IconButton
-        css={`
-          position: absolute;
-          top: 16px;
-          right: 16px;
-          background-color: rgb(224 242 254);
-          color: rgb(59 130 246);
-          &:active {
-            background-color: rgb(191 219 254);
-          }
-        `}
-        size='sm'
-        variant={'unstyled'}
-        aria-label='reservation-icon'
-        icon={<CalendarIcon />}
-        onClick={() => {
-          const { message } = reservationService.reserveItem(itemData);
-          if (message === 'SUCCESS') {
-            toast({
-              title: '장바구니 담기 완료',
-              status: 'success',
-              duration: 1000,
-              isClosable: true,
-            });
-          } else {
-            toast({
-              title: '이미 있는 상품입니다',
-              status: 'error',
-              duration: 1000,
-              isClosable: true,
-            });
-          }
-        }}
-      />
       <ListItemModal isOpen={isOpen} onClose={onClose} itemData={itemData} />
     </Box>
   );

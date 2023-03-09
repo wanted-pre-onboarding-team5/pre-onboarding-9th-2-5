@@ -1,13 +1,15 @@
-import { StarIcon, WarningIcon, CalendarIcon } from '@chakra-ui/icons';
+import { StarIcon, WarningIcon, CalendarIcon, AddIcon, MinusIcon } from '@chakra-ui/icons';
 import {
   Modal,
-  ModalContent,
   ModalOverlay,
-  Heading,
+  ModalContent,
   ModalBody,
-  Button,
-  Image,
   ModalCloseButton,
+  Heading,
+  ButtonGroup,
+  Button,
+  IconButton,
+  Image,
   Flex,
   HStack,
   useToast,
@@ -26,6 +28,7 @@ type Props = {
 
 function ListItemModal({ isOpen, onClose, itemData }: Props) {
   const toast = useToast();
+  const [amount, setAmount] = React.useState(1);
   return (
     <Modal isCentered isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -60,12 +63,33 @@ function ListItemModal({ isOpen, onClose, itemData }: Props) {
             <span style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
               ₩{itemData.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
             </span>
-            <HStack style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'rgb(51 65 85)' }}>
+            <HStack style={{ fontSize: '0.65rem', fontWeight: 'bold', color: 'rgb(51 65 85)' }}>
               <WarningIcon />
-              <span>구매 한계 수량 :</span>
-              <span>{itemData.maximumPurchases}</span>
+              <span>구매 한계 수량 : {itemData.maximumPurchases}개</span>
             </HStack>
           </Flex>
+          <ButtonGroup isAttached size={'md'} variant='outline'>
+            <IconButton
+              aria-label='minus-button'
+              icon={<MinusIcon />}
+              onClick={() => setAmount((prev) => prev - 1)}
+              isDisabled={amount === 1}
+            />
+            <Button
+              css={`
+                cursor: default;
+                pointer-events: none;
+              `}
+            >
+              {amount}
+            </Button>
+            <IconButton
+              aria-label='plus-button'
+              icon={<AddIcon />}
+              isDisabled={amount === itemData.maximumPurchases}
+              onClick={() => setAmount((prev) => prev + 1)}
+            />
+          </ButtonGroup>
           <Button
             variant={'unstyled'}
             css={`
@@ -77,7 +101,7 @@ function ListItemModal({ isOpen, onClose, itemData }: Props) {
               }
             `}
             onClick={() => {
-              const { message } = reservationService.reserveItem(itemData);
+              const { message } = reservationService.reserveItem(itemData, amount);
               if (message === 'SUCCESS') {
                 toast({
                   title: '장바구니 담기 완료',
