@@ -5,7 +5,7 @@ import { reservationReducer } from './reservationReducer';
 const initialState = {
   cart: [],
   totalItemCount: 0,
-  subTotal: 0,
+  subtotal: 0,
 };
 
 const ReservationStateContext = createContext(undefined);
