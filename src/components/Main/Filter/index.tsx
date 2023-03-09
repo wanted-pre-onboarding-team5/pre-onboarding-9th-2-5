@@ -19,23 +19,39 @@ export const Filter = ({ onFilter }: FilterProps) => {
     onFilter({ price: selectedPrice, spaceCategory: spaces });
   };
 
+  const prices = [
+    { value: '', label: '전체 가격대' },
+    { value: '0,10000', label: '10,000원 미만' },
+    { value: '10000,20000', label: '10,000원~20,000원' },
+    { value: '30000,', label: '30,000원 이상' },
+  ];
+
+  const spaces = [
+    { value: '강원', label: '강원' },
+    { value: '서울', label: '서울' },
+    { value: '부산', label: '부산' },
+    { value: '대구', label: '대구' },
+    { value: '제주', label: '제주' },
+  ];
+
   return (
     <Flex mb={4} align='center'>
       <Box mr={4}>
         <Select value={selectedPrice} onChange={handlePriceChange}>
-          <option value=''>전체 가격대</option>
-          <option value='0,10000'>10,000원 미만</option>
-          <option value='10000,20000'>10,000원~20,000원</option>
-          <option value='30000,'>30,000원 이상</option>
+          {prices.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
         </Select>
       </Box>
       <Stack spacing={5} direction='row'>
         <CheckboxGroup onChange={handleSpacesChange} value={selectedSpaces}>
-          <Checkbox value='강원'>강원</Checkbox>
-          <Checkbox value='서울'>서울</Checkbox>
-          <Checkbox value='부산'>부산</Checkbox>
-          <Checkbox value='대구'>대구</Checkbox>
-          <Checkbox value='제주'>제주</Checkbox>
+          {spaces.map((option) => (
+            <Checkbox key={option.value} value={option.value}>
+              {option.label}
+            </Checkbox>
+          ))}
         </CheckboxGroup>
       </Stack>
     </Flex>

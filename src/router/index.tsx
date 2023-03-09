@@ -9,7 +9,7 @@ import { Root } from '@/pages/Root';
 
 const routes: RouteObject[] = [
   {
-    path: '/',
+    path: PATH_ROUTE.root,
     element: <Root />,
   },
   {
@@ -19,6 +19,4 @@ const routes: RouteObject[] = [
   },
 ];
 
-export const router = createBrowserRouter(routes, {
-  basename: '/',
-});
+export const router = createBrowserRouter(routes);

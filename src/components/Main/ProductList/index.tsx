@@ -6,7 +6,6 @@ import { Filter } from '../Filter';
 import { ProductItem } from './ProductItem';
 import { ProductModal } from './ProductModal';
 
-import { Product } from '@/apis/travelApi.type';
 import useCart from '@/hooks/useCart';
 
 export const ProductList = ({ products }: { products: Product[] }) => {
@@ -52,6 +51,11 @@ export const ProductList = ({ products }: { products: Product[] }) => {
     setFilters(newFilters);
   };
 
+  const handleModalOpen = (product: Product) => {
+    setModalData(product);
+    onOpen();
+  };
+
   return (
     <>
       <Filter onFilter={handleFilterChange} />
@@ -69,10 +73,7 @@ export const ProductList = ({ products }: { products: Product[] }) => {
             <ProductItem
               key={product.idx}
               product={product}
-              onOpen={() => {
-                setModalData(product);
-                onOpen();
-              }}
+              onOpen={() => handleModalOpen(product)}
               onReservationClick={() => addItemToCart(product)}
             />
           );

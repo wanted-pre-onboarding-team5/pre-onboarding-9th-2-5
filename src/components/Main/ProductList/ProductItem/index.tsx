@@ -12,8 +12,6 @@ import {
   HStack,
 } from '@chakra-ui/react';
 
-import { Product } from '@/apis/travelApi.type';
-
 interface ProductItemProps {
   product: Product;
   onOpen: () => void;

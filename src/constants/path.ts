@@ -1,4 +1,5 @@
 export const PATH_ROUTE: Readonly<{ [key: string]: string }> = Object.freeze({
+  root: '/',
   main: '/main',
 });
 

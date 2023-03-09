@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import { Product } from '@/apis/travelApi.type';
-
 interface CartItem {
   product: Product;
   quantity: number;

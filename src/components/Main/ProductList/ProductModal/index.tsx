@@ -11,8 +11,6 @@ import {
   VStack,
 } from '@chakra-ui/react';
 
-import { Product } from '@/apis/travelApi.type';
-
 interface ProductModalProps {
   isOpen: boolean;
   onClose: () => void;
