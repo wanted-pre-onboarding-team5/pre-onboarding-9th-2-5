@@ -21,14 +21,26 @@ import { QuantityButton } from '@/components/common/QuantityButton';
 import { useReservationDispatch } from '@/providers/Reservation/ReservationProvider';
 
 export const ReservationItem = (props) => {
-  const { idx, name, mainImage, description, price } = props;
-  const [quantity, setQuantity] = useState(1);
+  const { idx, name, mainImage, description, price, maximumPurchases, quantity } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const reservationDispatch = useReservationDispatch();
+  const [currentQuantity, setCurrentQuantity] = useState(quantity);
 
   const removeItem = () => {
     reservationDispatch({ type: 'remove', payload: idx });
     onClose();
+  };
+
+  const plusQuantity = () => {
+    if (currentQuantity >= maximumPurchases) return;
+    setCurrentQuantity((prev) => prev + 1);
+    reservationDispatch({ type: 'plus', payload: idx });
+  };
+
+  const minusQuantity = () => {
+    if (currentQuantity === 1) return;
+    setCurrentQuantity((prev) => prev - 1);
+    reservationDispatch({ type: 'minus', payload: idx });
   };
 
   return (
@@ -55,7 +67,14 @@ export const ReservationItem = (props) => {
           </Flex>
         </Td>
         <Td>
-          <QuantityButton quantity={quantity} setQuantity={setQuantity} />
+          <QuantityButton
+            quantity={currentQuantity}
+            onPlus={plusQuantity}
+            onMinus={minusQuantity}
+          />
+          <Text fontSize='sm' color='blue.700' mt='3'>
+            최대 구매 가능 수량: {maximumPurchases}
+          </Text>
         </Td>
         <Td>₩{price.toLocaleString()}</Td>
         <Td fontWeight='bold'>₩{(quantity * price).toLocaleString()}</Td>

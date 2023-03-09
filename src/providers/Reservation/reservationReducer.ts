@@ -23,6 +23,41 @@ export const reservationReducer = (state, action) => {
         cart: updatedCart,
       };
     }
+    case 'plus': {
+      const { cart } = state;
+      const idx = action.payload;
+      const updatedCart = cart.map((item) => {
+        if (item.idx === idx) {
+          return { ...item, quantity: item.quantity + 1 };
+        } else {
+          return item;
+        }
+      });
+      setLocalStorageItem(RESERVATIONS_KEY, updatedCart);
+
+      return {
+        ...state,
+        cart: updatedCart,
+      };
+    }
+    case 'minus': {
+      const { cart } = state;
+      const idx = action.payload;
+
+      const updatedCart = cart.map((item) => {
+        if (item.idx === idx) {
+          return { ...item, quantity: item.quantity - 1 };
+        } else {
+          return item;
+        }
+      });
+      setLocalStorageItem(RESERVATIONS_KEY, updatedCart);
+
+      return {
+        ...state,
+        cart: updatedCart,
+      };
+    }
     default:
       console.log('Invaild action type');
   }
