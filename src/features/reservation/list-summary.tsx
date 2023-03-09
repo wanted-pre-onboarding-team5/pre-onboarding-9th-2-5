@@ -30,11 +30,11 @@ function ListSummary({ reservationList }: Props) {
           >
             <span>{item.name}</span>
             <span>
-              ({item.price} X {item.maximumPurchases}개)
+              ({item.price} X {item.reservedAmount}개)
             </span>
             <Spacer />
             <span style={{ fontWeight: 'bold' }}>
-              ₩ {(+item.maximumPurchases * +item.price).toLocaleString()}
+              ₩ {(+item.reservedAmount * +item.price).toLocaleString()}
             </span>
           </HStack>
         ))}
@@ -49,8 +49,7 @@ function ListSummary({ reservationList }: Props) {
         <span>총 예상 금액</span>
         <Spacer />
         <span>
-          ₩
-          {reservationList.reduce((a, c) => a + +c.price * +c.maximumPurchases, 0).toLocaleString()}{' '}
+          ₩{reservationList.reduce((a, c) => a + +c.price * +c.reservedAmount, 0).toLocaleString()}{' '}
         </span>
       </HStack>
       <Button colorScheme={'blue'}>결제하기</Button>

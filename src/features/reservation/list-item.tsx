@@ -60,7 +60,8 @@ function ListItem({ itemData, refetch }: Props) {
             <IconButton
               aria-label='minus-button'
               icon={<MinusIcon />}
-              onClick={() => updateAmount(1 + 1)}
+              isDisabled={itemData.reservedAmount === 1}
+              onClick={() => updateAmount(itemData.reservedAmount - 1)}
             />
             <Button
               css={`
@@ -68,12 +69,13 @@ function ListItem({ itemData, refetch }: Props) {
                 pointer-events: none;
               `}
             >
-              {1}
+              {itemData.reservedAmount}
             </Button>
             <IconButton
               aria-label='plus-button'
               icon={<AddIcon />}
-              onClick={() => updateAmount(1 + 1)}
+              isDisabled={itemData.reservedAmount === itemData.maximumPurchases}
+              onClick={() => updateAmount(itemData.reservedAmount + 1)}
             />
           </ButtonGroup>
         </Flex>
