@@ -1,6 +1,5 @@
 import { StarIcon } from '@chakra-ui/icons';
 import { Image, Heading, Text, Flex, HStack, Box, Spacer, useDisclosure } from '@chakra-ui/react';
-import React from 'react';
 
 import { MockItemType } from '@/types';
 

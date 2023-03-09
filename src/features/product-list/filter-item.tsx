@@ -1,6 +1,5 @@
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Button, HStack, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
-import React from 'react';
 
 import { useFilterContext } from './filter-provider';
 

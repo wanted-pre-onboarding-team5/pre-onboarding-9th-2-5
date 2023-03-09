@@ -1,5 +1,4 @@
 import { Box, HStack, Spacer, Button, Flex } from '@chakra-ui/react';
-import React from 'react';
 
 import { ReservationItemType } from '@/types';
 

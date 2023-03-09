@@ -18,7 +18,7 @@ import React from 'react';
 
 import { MockItemType } from '@/types';
 
-import reservationService from '../reservation/reservation-service';
+import reservationService from '@/features/reservation/reservation-service';
 
 type Props = {
   isOpen: boolean;

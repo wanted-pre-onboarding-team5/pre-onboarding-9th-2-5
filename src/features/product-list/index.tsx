@@ -1,5 +1,4 @@
 import { Heading } from '@chakra-ui/react';
-import React from 'react';
 
 import FilterContainer from './filter-container';
 import FilterProvider from './filter-provider';
