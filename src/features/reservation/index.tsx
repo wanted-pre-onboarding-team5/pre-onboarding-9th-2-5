@@ -6,7 +6,7 @@ import ListSummary from './list-summary';
 import reservationService from './reservation-service';
 
 function ReservationList() {
-  const reservedList = reservationService.getItem();
+  const reservedList = reservationService.getReservedList();
   const [reservedListState] = React.useState(reservedList);
 
   return (

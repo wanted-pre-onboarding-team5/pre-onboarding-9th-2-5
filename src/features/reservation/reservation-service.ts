@@ -5,20 +5,20 @@ class reservationService {
     if (this.checkIsDuplicatedItem(item.idx)) {
       return { message: 'FAIL' };
     } else {
-      const reservedItem: MockItemType[] = this.getItem();
-      localStorage.setItem('RESERVATION', JSON.stringify([...reservedItem, item]));
+      const reservedList = this.getReservedList();
+      localStorage.setItem('RESERVATION', JSON.stringify([...reservedList, item]));
       return { message: 'SUCCESS' };
     }
   }
 
-  static getItem(): MockItemType[] {
+  static getReservedList(): MockItemType[] {
     return localStorage.getItem('RESERVATION')
       ? JSON.parse(localStorage.getItem('RESERVATION') as string)
       : [];
   }
 
   static checkIsDuplicatedItem(idx: number) {
-    const reservedItem: MockItemType[] = this.getItem();
+    const reservedItem = this.getReservedList();
     if (reservedItem.find((item) => item.idx === idx)) return true;
     else return false;
   }
