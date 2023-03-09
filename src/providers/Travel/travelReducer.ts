@@ -1,4 +1,4 @@
-import { filterTravelItems } from '@/utils/filter';
+import { filterTravelItems } from '@/utils';
 
 export const travelReducer = (state, action) => {
   switch (action.type) {
