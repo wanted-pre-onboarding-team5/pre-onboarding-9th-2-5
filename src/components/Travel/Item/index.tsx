@@ -11,7 +11,6 @@ import {
 } from '@chakra-ui/react';
 
 import { TravelItemModal } from './Modal';
-import { ReservationButton } from './ReservationButton';
 
 export const TravelItem = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -38,7 +37,6 @@ export const TravelItem = (props) => {
               {spaceCategory}
             </Box>
           </Flex>
-          <ReservationButton itemData={props} />
         </CardBody>
       </Card>
       <TravelItemModal open={isOpen} close={onClose} itemData={props} />
