@@ -11,7 +11,7 @@ class reservationService {
     }
   }
 
-  static getItem() {
+  static getItem(): MockItemType[] {
     return localStorage.getItem('RESERVATION')
       ? JSON.parse(localStorage.getItem('RESERVATION') as string)
       : [];
