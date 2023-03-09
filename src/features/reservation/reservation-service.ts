@@ -18,9 +18,23 @@ class reservationService {
   }
 
   static checkIsDuplicatedItem(idx: number) {
-    const reservedItem = this.getReservedList();
-    if (reservedItem.find((item) => item.idx === idx)) return true;
+    const reservedList = this.getReservedList();
+    if (reservedList.find((item) => item.idx === idx)) return true;
     else return false;
+  }
+
+  static updateItem(newData: MockItemType) {
+    const reservedList = this.getReservedList();
+    const newList = [...reservedList];
+    const targetIdx = reservedList.findIndex((item) => item.idx === newData.idx);
+    newList.splice(targetIdx, 1, newData);
+    localStorage.setItem('RESERVATION', JSON.stringify([...newList]));
+  }
+
+  static deleteItem(itemIdx: number) {
+    const reservedList = this.getReservedList();
+    const newList = reservedList.filter((item) => item.idx !== itemIdx);
+    localStorage.setItem('RESERVATION', JSON.stringify([...newList]));
   }
 }
 

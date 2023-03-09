@@ -3,18 +3,17 @@ import React from 'react';
 
 import ListItem from './list-item';
 import ListSummary from './list-summary';
-import reservationService from './reservation-service';
+import useReservationList from './use-reservation-list';
 
 function ReservationList() {
-  const reservedList = reservationService.getReservedList();
-  const [reservedListState] = React.useState(reservedList);
+  const { reservationList, refetch } = useReservationList();
 
   return (
     <Flex flexDirection={'column'} gap='16px'>
-      {reservedList.map((reservedItem) => (
-        <ListItem key={reservedItem.idx} itemData={reservedItem} />
+      {reservationList.map((reservationItem) => (
+        <ListItem key={reservationItem.idx} itemData={reservationItem} refetch={refetch} />
       ))}
-      <ListSummary reservedListState={reservedListState} />
+      <ListSummary reservationList={reservationList} />
     </Flex>
   );
 }

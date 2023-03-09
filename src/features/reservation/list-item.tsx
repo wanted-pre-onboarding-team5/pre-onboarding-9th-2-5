@@ -13,11 +13,25 @@ import React from 'react';
 
 import { MockItemType } from '../product-list/list-item';
 
+import reservationService from './reservation-service';
+
 type Props = {
   itemData: MockItemType;
+  refetch: () => void;
 };
 
-function ListItem({ itemData }: Props) {
+function ListItem({ itemData, refetch }: Props) {
+  const updateAmount = (newAmount: number) => {
+    const newData = { ...itemData, reservedData: newAmount };
+    reservationService.updateItem(newData);
+    refetch();
+  };
+
+  const deleteItem = (itemIdx: number) => {
+    reservationService.deleteItem(itemIdx);
+    refetch();
+  };
+
   return (
     <Flex
       css={`
@@ -43,7 +57,11 @@ function ListItem({ itemData }: Props) {
           <Spacer />
 
           <ButtonGroup isAttached size={'sm'} variant='outline'>
-            <IconButton aria-label='minus-button' icon={<MinusIcon />} />
+            <IconButton
+              aria-label='minus-button'
+              icon={<MinusIcon />}
+              onClick={() => updateAmount(1 + 1)}
+            />
             <Button
               css={`
                 cursor: default;
@@ -52,7 +70,11 @@ function ListItem({ itemData }: Props) {
             >
               {1}
             </Button>
-            <IconButton aria-label='plus-button' icon={<AddIcon />} />
+            <IconButton
+              aria-label='plus-button'
+              icon={<AddIcon />}
+              onClick={() => updateAmount(1 + 1)}
+            />
           </ButtonGroup>
         </Flex>
       </Flex>
@@ -66,6 +88,7 @@ function ListItem({ itemData }: Props) {
         aria-label='delete-button'
         variant='unstyled'
         icon={<SmallCloseIcon />}
+        onClick={() => deleteItem(itemData.idx)}
       />
     </Flex>
   );

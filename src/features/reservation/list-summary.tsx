@@ -4,10 +4,10 @@ import React from 'react';
 import { MockItemType } from '../product-list/list-item';
 
 type Props = {
-  reservedListState: MockItemType[];
+  reservationList: MockItemType[];
 };
 
-function ListSummary({ reservedListState }: Props) {
+function ListSummary({ reservationList }: Props) {
   return (
     <Flex
       css={`
@@ -19,7 +19,7 @@ function ListSummary({ reservedListState }: Props) {
       `}
     >
       <Box>
-        {reservedListState.map((item) => (
+        {reservationList.map((item) => (
           <HStack
             key={item.idx}
             css={`
@@ -50,9 +50,7 @@ function ListSummary({ reservedListState }: Props) {
         <Spacer />
         <span>
           ₩
-          {reservedListState
-            .reduce((a, c) => a + +c.price * +c.maximumPurchases, 0)
-            .toLocaleString()}{' '}
+          {reservationList.reduce((a, c) => a + +c.price * +c.maximumPurchases, 0).toLocaleString()}{' '}
         </span>
       </HStack>
       <Button colorScheme={'blue'}>결제하기</Button>
