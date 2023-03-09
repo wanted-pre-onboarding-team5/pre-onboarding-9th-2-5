@@ -1,8 +1,18 @@
 import { Flex, Heading, TableContainer, Thead, Tr, Th, Table, Tbody } from '@chakra-ui/react';
+import { useEffect } from 'react';
+
+import { useReservationDispatch, useReservationState } from '@/providers';
 
 import { ReservationItem } from '@/components/Reservation/Item/ReservationItem';
 
 export const ReservationBox = ({ reservationData }) => {
+  const reservationDispatch = useReservationDispatch();
+  const { cart } = useReservationState();
+
+  useEffect(() => {
+    reservationDispatch({ type: 'init', payload: reservationData });
+  }, []);
+
   return (
     <Flex flexDirection='column'>
       <Heading size='lg' mb='5'>
@@ -20,7 +30,7 @@ export const ReservationBox = ({ reservationData }) => {
             </Tr>
           </Thead>
           <Tbody>
-            {reservationData.map((props, i) => {
+            {cart.map((props, i) => {
               return <ReservationItem key={i} {...props} />;
             })}
           </Tbody>

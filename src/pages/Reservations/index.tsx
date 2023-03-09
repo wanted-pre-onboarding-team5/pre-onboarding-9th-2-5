@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react';
 
+import { ReservationProvider } from '@/providers';
 import { getLocalStorageItem } from '@/utils';
 
 import { OrderSummary } from '@/components/OrderSummary';
@@ -18,9 +19,9 @@ export const Reservations = () => {
   }
 
   return (
-    <>
+    <ReservationProvider>
       <OrderSummary />
       <ReservationBox reservationData={reservations} />
-    </>
+    </ReservationProvider>
   );
 };
