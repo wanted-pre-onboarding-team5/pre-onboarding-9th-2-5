@@ -1,12 +1,18 @@
 import { createBrowserRouter, RouterProvider, Navigate, RouteObject } from 'react-router-dom';
 
+import Layout from '@/features/layout';
 import Main from '@/pages/main';
 import Reservations from '@/pages/reservations';
 
 const routeObjects: RouteObject[] = [
-  { path: '/', element: <Navigate to='/main' /> },
-  { path: '/main', element: <Main /> },
-  { path: '/reservations', element: <Reservations /> },
+  {
+    element: <Layout />,
+    children: [
+      { path: '/', element: <Navigate to='/main' /> },
+      { path: '/main', element: <Main /> },
+      { path: '/reservations', element: <Reservations /> },
+    ],
+  },
 ];
 
 const router = createBrowserRouter(routeObjects);
