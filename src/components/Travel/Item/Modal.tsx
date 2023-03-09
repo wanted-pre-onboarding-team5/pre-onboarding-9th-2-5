@@ -65,7 +65,7 @@ export const TravelItemModal = ({ open, close, itemData }) => {
               {description}
             </Text>
             <Text color='blue.600' fontSize='lg' textAlign='center' fontWeight='bold'>
-              ₩{price}
+              ₩{price.toLocaleString()}
             </Text>
 
             <Flex pt='3' flexDirection='column' justifyContent='center' alignItems='center'>

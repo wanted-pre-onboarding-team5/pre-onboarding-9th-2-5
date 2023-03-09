@@ -19,7 +19,7 @@ export const TravelItem = (props) => {
   return (
     <>
       <Card maxW='sm'>
-        <CardBody onClick={onOpen} cursor='pointer' p='3'>
+        <CardBody onClick={onOpen} cursor='pointer' p='2'>
           <Image src={mainImage} alt={name} borderRadius='md' />
           <Text pt='2' color='gray.500' fontSize='xs' borderRadius='base'>
             No. {idx}
@@ -31,7 +31,7 @@ export const TravelItem = (props) => {
           </Stack>
           <Flex justifyContent='space-between' alignItems='center'>
             <Text color='blue.600' fontSize='lg' fontWeight='bold'>
-              ₩{price}
+              ₩{price.toLocaleString()}
             </Text>
             <Box p='1.5' bg='gray.200' borderRadius='xl'>
               {spaceCategory}
