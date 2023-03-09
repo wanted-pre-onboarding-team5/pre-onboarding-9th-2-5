@@ -1,4 +1,4 @@
-import { FILTER_PRICE_RANGE } from '@/constants/filter';
+import { FILTER_PRICE_RANGE } from '@/constants';
 
 const getPriceRangeFilter = (priceFilter) => {
   return priceFilter.map((idx) => FILTER_PRICE_RANGE[idx]);

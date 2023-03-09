@@ -1,6 +1,5 @@
+import { RESERVATIONS_KEY } from '@/constants';
 import { setLocalStorageItem, updateReservationStatus } from '@/utils';
-
-import { RESERVATIONS_KEY } from '@/constants/storage';
 
 export const reservationReducer = (state, action) => {
   switch (action.type) {

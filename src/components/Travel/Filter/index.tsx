@@ -1,9 +1,9 @@
 import { Flex, Menu, MenuButton, MenuList, Button, MenuDivider } from '@chakra-ui/react';
 
+import { FILTER_PRICE, FILTER_SPACE } from '@/constants';
 import { useTravelDispatch } from '@/providers';
 
 import { FilterCheckboxGroup } from '@/components/Travel/Filter/FilterCheckboxGroup';
-import { FILTER_PRICE, FILTER_SPACE } from '@/constants/filter';
 
 export const Filter = () => {
   const travelDispatch = useTravelDispatch();

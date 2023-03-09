@@ -1,11 +1,11 @@
 import { Box } from '@chakra-ui/react';
 
+import { RESERVATIONS_KEY } from '@/constants';
 import { ReservationProvider } from '@/providers';
 import { getLocalStorageItem } from '@/utils';
 
 import { OrderSummary } from '@/components/OrderSummary';
 import { ReservationBox } from '@/components/Reservation/Box';
-import { RESERVATIONS_KEY } from '@/constants/storage';
 
 export const Reservations = () => {
   const reservations = getLocalStorageItem(RESERVATIONS_KEY) || [];

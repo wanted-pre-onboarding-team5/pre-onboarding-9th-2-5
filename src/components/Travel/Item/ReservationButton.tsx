@@ -1,9 +1,7 @@
 import { Button, useToast } from '@chakra-ui/react';
 
-import { getToastCartSuccessOption, TOAST_CART_INFO_OPTION } from '@/constants';
+import { getToastCartSuccessOption, TOAST_CART_INFO_OPTION, RESERVATIONS_KEY } from '@/constants';
 import { getLocalStorageItem, setLocalStorageItem } from '@/utils';
-
-import { RESERVATIONS_KEY } from '@/constants/storage';
 
 export const ReservationButton = ({ itemData, quantity }) => {
   const { idx, name } = itemData;
