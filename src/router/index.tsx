@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 
-import { RootPage, MainPage } from '@/pages';
+import { RootPage, MainPage, CartPage } from '@/pages';
 
 import { Layout } from '@/layouts/Layout';
 
@@ -12,7 +12,12 @@ const routes: RouteObject[] = [
   {
     path: '/main',
     element: <Layout />,
-    children: [{ path: '', element: <MainPage /> }],
+    children: [{ index: true, element: <MainPage /> }],
+  },
+  {
+    path: '/reservations',
+    element: <Layout />,
+    children: [{ index: true, element: <CartPage /> }],
   },
 ];
 
