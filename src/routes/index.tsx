@@ -1,12 +1,7 @@
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate, RouteObject } from 'react-router-dom';
 
 import Main from '@/pages/main';
 import Reservations from '@/pages/reservations';
-
-interface RouteObject {
-  path: string;
-  element: React.ReactNode;
-}
 
 const routeObjects: RouteObject[] = [
   { path: '/', element: <Navigate to='/main' /> },
