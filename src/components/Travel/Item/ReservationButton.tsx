@@ -4,7 +4,7 @@ import { getLocalStorageItem, setLocalStorageItem } from '@/utils';
 
 import { RESERVATIONS_KEY } from '@/constants/storage';
 
-export const ReservationButton = ({ itemData }) => {
+export const ReservationButton = ({ itemData, quantity }) => {
   const { idx, name } = itemData;
 
   const handleReservationClick = () => {
@@ -14,9 +14,9 @@ export const ReservationButton = ({ itemData }) => {
       alert('이미 장바구니에 있는 상품이에요. 장바구니를 확인해 주세요.');
       return;
     }
-    const reservation = { ...itemData, quantity: 1 };
+    const reservation = { ...itemData, quantity };
     setLocalStorageItem(RESERVATIONS_KEY, [...filteredReservations, reservation]);
-    alert(`장바구니에 [${name}] 상품이 잘 담겼어요!`);
+    alert(`장바구니에 [${name}] 상품이 ${quantity}개 담겼어요!`);
   };
 
   return (

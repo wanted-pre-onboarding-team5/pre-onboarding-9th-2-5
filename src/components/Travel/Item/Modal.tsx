@@ -6,13 +6,15 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   Flex,
 } from '@chakra-ui/react';
+import { useState } from 'react';
 
 import { ReservationButton } from './ReservationButton';
+
+import { QuantityButton } from '@/components/common/QuantityButton';
 
 export const TravelItemModal = ({ open, close, itemData }) => {
   const {
@@ -25,6 +27,17 @@ export const TravelItemModal = ({ open, close, itemData }) => {
     maximumPurchases,
     registrationDate,
   } = itemData;
+  const [itemQuantity, setItemQuantity] = useState(1);
+
+  const plusItemQuantity = () => {
+    if (itemQuantity >= maximumPurchases) return;
+    setItemQuantity((prev) => prev + 1);
+  };
+
+  const minusItemQuantity = () => {
+    if (itemQuantity === 1) return;
+    setItemQuantity((prev) => prev - 1);
+  };
 
   return (
     <>
@@ -59,7 +72,14 @@ export const TravelItemModal = ({ open, close, itemData }) => {
               <Text fontSize='sm' mb='2'>
                 최대 예약 가능 수량: {maximumPurchases}
               </Text>
-              <ReservationButton itemData={itemData} />
+              <Flex justifyContent='space-between' alignItems='center' width='100%'>
+                <QuantityButton
+                  quantity={itemQuantity}
+                  onPlus={plusItemQuantity}
+                  onMinus={minusItemQuantity}
+                />
+                <ReservationButton itemData={itemData} quantity={itemQuantity} />
+              </Flex>
             </Flex>
           </ModalBody>
         </ModalContent>
