@@ -16,9 +16,9 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 
-import reservationService from '../reservation/reservation-service';
+import { MockItemType } from '@/types';
 
-import { MockItemType } from './list-item';
+import reservationService from '../reservation/reservation-service';
 
 type Props = {
   isOpen: boolean;

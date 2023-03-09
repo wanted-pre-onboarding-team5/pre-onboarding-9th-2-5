@@ -1,10 +1,10 @@
 import { Box, HStack, Spacer, Button, Flex } from '@chakra-ui/react';
 import React from 'react';
 
-import { MockItemType } from '../product-list/list-item';
+import { ReservationItemType } from '@/types';
 
 type Props = {
-  reservationList: MockItemType[];
+  reservationList: ReservationItemType[];
 };
 
 function ListSummary({ reservationList }: Props) {

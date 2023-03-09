@@ -2,18 +2,9 @@ import { StarIcon } from '@chakra-ui/icons';
 import { Image, Heading, Text, Flex, HStack, Box, Spacer, useDisclosure } from '@chakra-ui/react';
 import React from 'react';
 
-import ListItemModal from './list-item-modal';
+import { MockItemType } from '@/types';
 
-export type MockItemType = {
-  idx: number;
-  name: string;
-  mainImage: string;
-  description: string;
-  spaceCategory: string;
-  price: number;
-  maximumPurchases: number;
-  registrationDate: string;
-};
+import ListItemModal from './list-item-modal';
 
 type Props = {
   itemData: MockItemType;

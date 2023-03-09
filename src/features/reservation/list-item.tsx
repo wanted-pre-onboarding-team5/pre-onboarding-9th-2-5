@@ -11,12 +11,12 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 
-import { MockItemType } from '../product-list/list-item';
+import { ReservationItemType } from '@/types';
 
 import reservationService from './reservation-service';
 
 type Props = {
-  itemData: MockItemType;
+  itemData: ReservationItemType;
   refetch: () => void;
 };
 

@@ -1,8 +1,10 @@
 import { VStack } from '@chakra-ui/react';
 import React from 'react';
 
+import { MockItemType } from '@/types';
+
 import { useFilterContext } from './filter-provider';
-import ListItem, { MockItemType } from './list-item';
+import ListItem from './list-item';
 
 import mockData from '@/mocks/data.json';
 

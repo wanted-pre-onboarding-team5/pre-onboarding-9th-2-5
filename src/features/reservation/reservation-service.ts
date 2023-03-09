@@ -1,4 +1,4 @@
-import { MockItemType } from '../product-list/list-item';
+import { ReservationItemType, MockItemType } from '@/types';
 
 class reservationService {
   static reserveItem(item: MockItemType, amount: number) {
@@ -14,7 +14,7 @@ class reservationService {
     }
   }
 
-  static getReservedList(): MockItemType[] {
+  static getReservedList(): ReservationItemType[] {
     return localStorage.getItem('RESERVATION')
       ? JSON.parse(localStorage.getItem('RESERVATION') as string)
       : [];
@@ -26,7 +26,7 @@ class reservationService {
     else return false;
   }
 
-  static updateItem(newData: MockItemType) {
+  static updateItem(newData: ReservationItemType) {
     const reservedList = this.getReservedList();
     const newList = [...reservedList];
     const targetIdx = reservedList.findIndex((item) => item.idx === newData.idx);
