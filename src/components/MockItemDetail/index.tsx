@@ -36,8 +36,7 @@ export const MockItemDetail = ({
   } = mockdata;
 
   const reservationClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-
+    e.preventDefault();
     if (!localStorage.getItem('reserv_item_info')) {
       localStorage.setItem('reserv_item_info', JSON.stringify([]));
     }

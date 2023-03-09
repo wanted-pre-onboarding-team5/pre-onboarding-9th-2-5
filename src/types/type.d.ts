@@ -7,5 +7,5 @@ export type mockDataType = {
   price: number;
   registrationDate: string;
   spaceCategory: string;
-  key: idx;
+  key?: idx;
 };
