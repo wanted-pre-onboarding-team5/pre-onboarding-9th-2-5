@@ -2,9 +2,9 @@ import { Box, Button } from '@chakra-ui/react';
 import { useState } from 'react';
 
 export const Reservations = () => {
-  const getLocalStorageItem = (key: string) => {
-    const storedValue = localStorage.getItem(key);
-    return storedValue ? JSON.parse(storedValue) : null;
+  const getLocalStorageItem = (key) => {
+    const getValue = localStorage.getItem(key);
+    return JSON.parse(getValue);
   };
 
   const RESERVATIONS_KEY = 'reservations';
@@ -28,15 +28,13 @@ export const Reservations = () => {
         <h1>Reservations List</h1>
       </Box>
       <Box>
-        {reservations.length === 0 && (
-          <span className='empty-text'>Your basket is currently empty</span>
-        )}
+        {reservations.length === 0 && <span>장바구니가 비어있습니다.</span>}
         {reservations.map((product) => (
-          <Box key={product.id}>
-            <img src={product.image} alt={product.name} />
+          <Box key={product.idx}>
+            <img src={product.mainImage} alt={product.name} />
             <Box>
               <h3>{product.name}</h3>
-              <span className='product-price'>{product.price * countReservations}$</span>
+              <span>{product.price * countReservations}원</span>
               <Button>+</Button>
               <Button>{countReservations}</Button>
               <Button>-</Button>
