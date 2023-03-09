@@ -1,5 +1,3 @@
-import { Product } from './travelApi.type';
-
 import { PATH_API } from '@/constants/path';
 
 export const getProductList = async (): Promise<Product[]> => {
