@@ -39,7 +39,7 @@ export const Reservations = () => {
               <Button>{countReservations}</Button>
               <Button>-</Button>
             </Box>
-            <select className='count' value={product.count}>
+            <select value={product.count}>
               {[...Array(10).keys()].map((number) => {
                 const num = number + 1;
                 return (
@@ -49,12 +49,12 @@ export const Reservations = () => {
                 );
               })}
             </select>
-            <Button className='btn remove-btn' onClick={() => onProductRemove(product)}>
+            <Button onClick={() => onProductRemove(product)}>
               삭제
             </Button>
           </Box>
         ))}
-        {reservations.length > 0 && <Button className='btn checkout-btn'>결제</Button>}
+        {reservations.length > 0 && <Button>결제</Button>}
       </Box>
     </Box>
   );
