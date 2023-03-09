@@ -8,6 +8,14 @@ function Header() {
     <Box borderBottom={'1px solid #efefef'} marginBottom='16px'>
       <Container py={'8px'}>
         <HStack>
+          <Button
+            variant={'unstyled'}
+            onClick={() => {
+              navigate('/main');
+            }}
+          >
+            Like A Local
+          </Button>
           <Spacer />
           <Button
             colorScheme='blue'
