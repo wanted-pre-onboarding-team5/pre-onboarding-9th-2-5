@@ -2,7 +2,7 @@ import { MockItemType } from '../product-list/list-item';
 
 class reservationService {
   static reserveItem(item: MockItemType) {
-    if (this.IsDuplicatedItem(item.idx)) {
+    if (this.checkIsDuplicatedItem(item.idx)) {
       return { message: 'FAIL' };
     } else {
       const reservedItem: MockItemType[] = this.getItem();
@@ -17,7 +17,7 @@ class reservationService {
       : [];
   }
 
-  static IsDuplicatedItem(idx: number) {
+  static checkIsDuplicatedItem(idx: number) {
     const reservedItem: MockItemType[] = this.getItem();
     if (reservedItem.find((item) => item.idx === idx)) return true;
     else return false;
