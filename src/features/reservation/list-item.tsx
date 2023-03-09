@@ -8,11 +8,13 @@ import {
   IconButton,
   Button,
   Spacer,
+  useDisclosure,
 } from '@chakra-ui/react';
 import React from 'react';
 
 import { ReservationItemType } from '@/types';
 
+import ListItemDeleteDialog from './list-item-delete-dialog';
 import reservationService from './reservation-service';
 
 type Props = {
@@ -21,6 +23,7 @@ type Props = {
 };
 
 function ListItem({ itemData, refetch }: Props) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const updateAmount = (newAmount: number) => {
     const newData = { ...itemData, reservedAmount: newAmount };
     reservationService.updateItem(newData);
@@ -90,7 +93,12 @@ function ListItem({ itemData, refetch }: Props) {
         aria-label='delete-button'
         variant='unstyled'
         icon={<SmallCloseIcon />}
-        onClick={() => deleteItem(itemData.idx)}
+        onClick={onOpen}
+      />
+      <ListItemDeleteDialog
+        isOpen={isOpen}
+        onClose={onClose}
+        deleteAction={() => deleteItem(itemData.idx)}
       />
     </Flex>
   );
