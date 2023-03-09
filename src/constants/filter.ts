@@ -1,14 +1,14 @@
 export const FILTER_PRICE = [
   {
-    name: '1만 원 미만',
+    name: '~₩10,000',
     idx: 0,
   },
   {
-    name: '1~2만원대',
+    name: '₩10,000~₩30,000',
     idx: 1,
   },
   {
-    name: '3만 원 이상',
+    name: '₩30,000~',
     idx: 2,
   },
 ];
