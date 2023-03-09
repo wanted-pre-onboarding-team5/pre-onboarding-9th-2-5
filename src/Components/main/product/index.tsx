@@ -12,12 +12,13 @@ export type Props = {
   maxPurchase: number;
   date: string;
 };
+export const Product = (props: Product) => {
+  const { name, mainImage, description, price, spaceCategory } = props;
 
-export const Product = ({ img, desc, idx, name, price, space, maxPurchase, date }: Props) => {
   return (
     <Box display='flex' alignItems='center' justifyContent='center'>
       <Box maxW='lg' borderWidth='1px' borderRadius='lg' m='3'>
-        <Image src={img} alt={desc} />
+        <Image src={mainImage} alt={description} />
         <Box display='flex' alignItems='center' justifyContent='center' h='50px' fontSize='2sm'>
           {name}
         </Box>
@@ -25,20 +26,11 @@ export const Product = ({ img, desc, idx, name, price, space, maxPurchase, date 
           <Text m='1' align='center'>
             {price}
             <Spacer />
-            {space}
+            {spaceCategory}
           </Text>
         </Box>
         <Spacer />
-        <ModalDiv
-          idx={idx}
-          img={img}
-          desc={desc}
-          name={name}
-          price={price}
-          space={space}
-          maxPurchase={maxPurchase}
-          date={date}
-        />
+        <ModalDiv product={props} />
       </Box>
     </Box>
   );

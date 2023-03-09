@@ -9,32 +9,8 @@ export const ProductList = ({ filteredPrice }: { filteredPrice?: Product[] | nul
       <Box>
         <Grid templateColumns='repeat(4, 1fr)' gap={3}>
           {filteredPrice
-            ? filteredPrice.map((product) => (
-                <Product
-                  key={product.idx}
-                  idx={product.idx}
-                  img={product.mainImage}
-                  desc={product.description}
-                  name={product.name}
-                  price={product.price}
-                  space={product.spaceCategory}
-                  maxPurchase={product.maximumPurchases}
-                  date={product.registrationDate}
-                />
-              ))
-            : data.map((product) => (
-                <Product
-                  key={product.idx}
-                  idx={product.idx}
-                  img={product.mainImage}
-                  desc={product.description}
-                  name={product.name}
-                  price={product.price}
-                  space={product.spaceCategory}
-                  maxPurchase={product.maximumPurchases}
-                  date={product.registrationDate}
-                />
-              ))}
+            ? filteredPrice.map((product) => <Product key={product.idx} {...product} />)
+            : data.map((product) => <Product key={product.idx} {...product} />)}
         </Grid>
       </Box>
     </Box>

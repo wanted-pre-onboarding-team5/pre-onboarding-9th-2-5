@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { Main } from './pages/Main';
+import { Reservations } from './pages/Reservations';
 import { Root } from './pages/Root';
 
 const routes = [
@@ -11,6 +12,10 @@ const routes = [
   {
     path: '/main',
     element: <Main />,
+  },
+  {
+    path: '/reservations',
+    element: <Reservations />,
   },
 ];
 

@@ -1,5 +1,9 @@
 import { Select, Flex, Box, Text } from '@chakra-ui/react';
 
+export const priceValues = ['less10000', '10000and20000', 'over20000'];
+const priceRanges = ['~ 10,000', '10,000 ~ 20,000', '20,000 ~'];
+export const spaceValues = ['강원', '서울', '부산', '대구', '제주'];
+
 export type Props = {
   priceSelect: string;
   setPriceSelect: React.Dispatch<React.SetStateAction<string>>;
@@ -19,9 +23,11 @@ export const Filter = ({ priceSelect, setPriceSelect, spaceSelect, setSpaceSelec
             value={priceSelect}
             onChange={(e) => setPriceSelect(e.target.value)}
           >
-            <option value='less10000'>~ 10,000</option>
-            <option value='10000and20000'>10,000 ~ 20,000</option>
-            <option value='over20000'>20,000 ~</option>
+            {priceValues.map((priceValue, i) => (
+              <option key={i} value={priceValue}>
+                {priceRanges[i]}
+              </option>
+            ))}
           </Select>
           <Select
             w={180}
@@ -29,11 +35,11 @@ export const Filter = ({ priceSelect, setPriceSelect, spaceSelect, setSpaceSelec
             value={spaceSelect}
             onChange={(e) => setSpaceSelect(e.target.value)}
           >
-            <option value='gangwon'>강원</option>
-            <option value='seoul'>서울</option>
-            <option value='busan'>부산</option>
-            <option value='daegu'>대구</option>
-            <option value='jeju'>제주</option>
+            {spaceValues.map((spaceValue, i) => (
+              <option key={i} value={spaceValue}>
+                {spaceValue}
+              </option>
+            ))}
           </Select>
         </Flex>
       </Box>
