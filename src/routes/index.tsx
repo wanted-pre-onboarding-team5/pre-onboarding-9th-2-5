@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 
-import Main from '@/pages/Main';
-import Reservations from '@/pages/Reservations';
+import Main from '@/pages/main';
+import Reservations from '@/pages/reservations';
 
 interface RouteObject {
   path: string;

@@ -1,6 +1,6 @@
 import Router from '@/routes';
 
-import Layout from '@/features/layout/Layout';
+import Layout from '@/features/layout';
 
 function App() {
   return (
