@@ -24,7 +24,7 @@ function ListItem({ itemData }: Props) {
         padding: 16px;
         gap: 16px;
         border: 1px solid #dedede;
-        borderradius: 4px;
+        border-radius: 4px;
         position: relative;
       `}
     >
