@@ -25,7 +25,7 @@ export const Filter = () => {
   return (
     <Flex justifyContent='flex-end' mb='2'>
       <Menu closeOnSelect={false}>
-        <MenuButton as={Button} colorScheme='blue'>
+        <MenuButton as={Button} colorScheme='facebook'>
           Filter
         </MenuButton>
         <MenuList minWidth='240px'>
