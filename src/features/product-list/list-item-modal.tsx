@@ -29,6 +29,27 @@ type Props = {
 function ListItemModal({ isOpen, onClose, itemData }: Props) {
   const toast = useToast();
   const [amount, setAmount] = React.useState(1);
+
+  const handleReservation = () => {
+    const { message } = reservationService.reserveItem(itemData, amount);
+    if (message === 'SUCCESS') {
+      toast({
+        title: '장바구니 담기 완료',
+        status: 'success',
+        duration: 1000,
+        isClosable: true,
+      });
+    } else {
+      toast({
+        title: '이미 있는 상품입니다',
+        status: 'error',
+        duration: 1000,
+        isClosable: true,
+      });
+    }
+    onClose();
+  };
+
   return (
     <Modal isCentered isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -113,24 +134,7 @@ function ListItemModal({ isOpen, onClose, itemData }: Props) {
                 background-color: rgb(191 219 254);
               }
             `}
-            onClick={() => {
-              const { message } = reservationService.reserveItem(itemData, amount);
-              if (message === 'SUCCESS') {
-                toast({
-                  title: '장바구니 담기 완료',
-                  status: 'success',
-                  duration: 1000,
-                  isClosable: true,
-                });
-              } else {
-                toast({
-                  title: '이미 있는 상품입니다',
-                  status: 'error',
-                  duration: 1000,
-                  isClosable: true,
-                });
-              }
-            }}
+            onClick={handleReservation}
           >
             장바구니 담기
           </Button>
