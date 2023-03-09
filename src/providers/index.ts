@@ -1,1 +1,2 @@
-export * from './TravelProvider';
+export * from './Travel/TravelProvider';
+export * from './Reservation/ReservationProvider';
