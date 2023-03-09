@@ -1,3 +1,4 @@
+import { Heading } from '@chakra-ui/react';
 import React from 'react';
 
 import FilterContainer from './filter-container';
@@ -7,6 +8,7 @@ import ListContainer from './list-container';
 function ProductList() {
   return (
     <FilterProvider>
+      <Heading size='md'>상품리스트</Heading>
       <FilterContainer />
       <ListContainer />
     </FilterProvider>
