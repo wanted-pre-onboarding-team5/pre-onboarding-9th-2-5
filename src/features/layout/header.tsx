@@ -5,7 +5,12 @@ import { useNavigate } from 'react-router-dom';
 function Header() {
   const navigate = useNavigate();
   return (
-    <Box borderBottom={'1px solid #efefef'} marginBottom='16px'>
+    <Box
+      css={`
+        border-bottom: 1px solid #efefef;
+        margin-bottom: 16px;
+      `}
+    >
       <Container py={'8px'}>
         <HStack>
           <Button

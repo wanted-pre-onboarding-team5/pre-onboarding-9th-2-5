@@ -28,8 +28,20 @@ function ListItem({ itemData }: Props) {
           }
         `}
       >
-        <Image src={itemData.mainImage} borderRadius='8px' width={150} height={100} />
-        <Flex flexDirection='column' flexGrow='1'>
+        <Image
+          src={itemData.mainImage}
+          css={`
+            border-radius: 8px;
+            width: 150px;
+            height: 100px;
+          `}
+        />
+        <Flex
+          css={`
+            flex-direction: column;
+            flex-grow: 1;
+          `}
+        >
           <Text fontSize='xs' color='rgb(30 58 138)' fontWeight={600}>
             {itemData.description}
           </Text>
@@ -37,13 +49,11 @@ function ListItem({ itemData }: Props) {
             {itemData.name}
           </Heading>
           <Flex>
-            <HStack style={{ fontSize: '0.8rem' }}>
+            <HStack fontSize='xs'>
               <StarIcon /> <span>{itemData.spaceCategory}</span>
             </HStack>
             <Spacer />
-            <span style={{ fontWeight: 'bold' }}>
-              ₩{itemData.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
-            </span>
+            <span style={{ fontWeight: 'bold' }}>₩{itemData.price.toLocaleString()}</span>
           </Flex>
         </Flex>
       </Flex>

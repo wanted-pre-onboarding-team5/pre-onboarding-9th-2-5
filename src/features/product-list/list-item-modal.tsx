@@ -32,38 +32,51 @@ function ListItemModal({ isOpen, onClose, itemData }: Props) {
   return (
     <Modal isCentered isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent padding={'16px'}>
+      <ModalContent p='16px'>
         <ModalCloseButton />
-        <Heading size={'md'}> {itemData.name}</Heading>
+        <Heading size='md'> {itemData.name}</Heading>
         <Flex my='8px'>
           <HStack
-            style={{
-              fontSize: '0.8rem',
-              marginRight: '16px',
-              fontWeight: 'bold',
-              color: 'rgb(51 65 85)',
-            }}
+            css={`
+              font-size: 0.8rem;
+              margin-right: 16px;
+              font-weight: bold;
+              color: rgb(51 65 85);
+            `}
           >
             <StarIcon /> <span>{itemData.spaceCategory}</span>
           </HStack>
-          <HStack style={{ fontSize: '0.8rem', fontWeight: 'bold', color: 'rgb(51 65 85)' }}>
+          <HStack
+            css={`
+              font-size: 0.8rem;
+              font-weight: bold;
+              color: rgb(51 65 85);
+            `}
+          >
             <CalendarIcon /> <span>{itemData.registrationDate}</span>
           </HStack>
         </Flex>
         <Image
           src={itemData.mainImage}
-          height={250}
-          objectFit='cover'
-          borderRadius={'8px'}
-          my='8px'
+          css={`
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+          `}
         />
         <ModalBody minHeight={'150px'}>{itemData.description}</ModalBody>
         <HStack gap={'16px'}>
           <Flex flexDirection={'column'}>
             <span style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
-              ₩{itemData.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
+              ₩{itemData.price.toLocaleString()}
             </span>
-            <HStack style={{ fontSize: '0.65rem', fontWeight: 'bold', color: 'rgb(51 65 85)' }}>
+            <HStack
+              css={`
+                font-size: 0.65rem;
+                font-weight: bold;
+                color: rgb(51 65 85);
+              `}
+            >
               <WarningIcon />
               <span>구매 한계 수량 : {itemData.maximumPurchases}개</span>
             </HStack>
