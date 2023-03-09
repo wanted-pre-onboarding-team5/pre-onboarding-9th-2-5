@@ -2,7 +2,8 @@ import { Box } from '@chakra-ui/react';
 
 import { getLocalStorageItem } from '@/utils';
 
-import { ReservationItem } from '@/components/Reservation/Item/ReservationItem';
+import { OrderSummary } from '@/components/OrderSummary';
+import { ReservationBox } from '@/components/Reservation/Box';
 import { RESERVATIONS_KEY } from '@/constants/storage';
 
 export const Reservations = () => {
@@ -18,11 +19,8 @@ export const Reservations = () => {
 
   return (
     <>
-      <div>
-        {reservations.map((props, i) => {
-          return <ReservationItem key={i} {...props} />;
-        })}
-      </div>
+      <OrderSummary />
+      <ReservationBox reservationData={reservations} />
     </>
   );
 };

@@ -1,53 +1,43 @@
-import {
-  Box,
-  Card,
-  Image,
-  Heading,
-  Button,
-  Stack,
-  Text,
-  CardBody,
-  CardFooter,
-} from '@chakra-ui/react';
+import { Image, Heading, Text, Button, Tr, Td, Flex } from '@chakra-ui/react';
 import { useState } from 'react';
+
+import { QuantityButton } from '@/components/common/QuantityButton';
 
 export const ReservationItem = (props) => {
   const { name, mainImage, description, price } = props;
   const [quantity, setQuantity] = useState(1);
 
-  return (
-    <>
-      <Card direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline'>
-        <Image objectFit='cover' maxW={{ base: '100%', sm: '200px' }} src={mainImage} alt={name} />
+  const removeItem = () => {
+    // TODO: Remove Items
+  };
 
-        <Stack>
-          <CardBody>
+  return (
+    <Tr>
+      <Td>
+        <Flex>
+          <Image
+            objectFit='cover'
+            maxW={{ base: '100%', sm: '100px' }}
+            src={mainImage}
+            alt={name}
+            mr='5'
+          />
+          <Flex flexDirection='column' justifyContent='space-between'>
             <Heading size='md'>{name}</Heading>
             <Text py='2'>{description}</Text>
-            <Text color='blue.600' fontSize='2xl'>
-              {price}원
-            </Text>
-          </CardBody>
-
-          <CardFooter>
-            <Box>{quantity}</Box>
-            <Button
-              variant='solid'
-              colorScheme='blue'
-              onClick={() => setQuantity((prev) => prev + 1)}
-            >
-              +
-            </Button>
-            <Button
-              variant='solid'
-              colorScheme='blue'
-              onClick={() => setQuantity((prev) => prev - 1)}
-            >
-              -
-            </Button>
-          </CardFooter>
-        </Stack>
-      </Card>
-    </>
+            <Flex>
+              <Button variant='link' size='xs' onClick={removeItem}>
+                Remove
+              </Button>
+            </Flex>
+          </Flex>
+        </Flex>
+      </Td>
+      <Td>
+        <QuantityButton quantity={quantity} setQuantity={setQuantity} />
+      </Td>
+      <Td>₩{price.toLocaleString()}</Td>
+      <Td fontWeight='bold'>₩{(quantity * price).toLocaleString()}</Td>
+    </Tr>
   );
 };
