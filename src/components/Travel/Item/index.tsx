@@ -41,7 +41,7 @@ export const TravelItem = (props: TravelItemType) => {
           </Flex>
         </CardBody>
       </Card>
-      <TravelItemModal open={isOpen} close={onClose} itemData={props} />
+      <TravelItemModal isOpen={isOpen} onClose={onClose} itemData={props} />
     </>
   );
 };

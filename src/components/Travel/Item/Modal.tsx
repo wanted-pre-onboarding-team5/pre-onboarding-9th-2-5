@@ -17,12 +17,12 @@ import { ReservationButton } from './ReservationButton';
 import { QuantityButton } from '@/components/common/QuantityButton';
 import { TravelItemType } from '@/types/TravelItemType';
 interface TravelItemModalProps {
-  open: boolean;
-  close: () => void;
+  isOpen: boolean;
+  onClose: () => void;
   itemData: TravelItemType;
 }
 
-export const TravelItemModal = ({ open, close, itemData }: TravelItemModalProps) => {
+export const TravelItemModal = ({ isOpen, onClose, itemData }: TravelItemModalProps) => {
   const {
     idx,
     name,
@@ -47,7 +47,7 @@ export const TravelItemModal = ({ open, close, itemData }: TravelItemModalProps)
 
   return (
     <>
-      <Modal isOpen={open} onClose={close} isCentered motionPreset='slideInBottom' size='md'>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered motionPreset='slideInBottom' size='md'>
         <ModalOverlay />
         <ModalContent p='5' alignItems='center'>
           <ModalHeader fontSize='2xl'>{name}</ModalHeader>
