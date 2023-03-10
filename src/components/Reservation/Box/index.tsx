@@ -4,8 +4,13 @@ import { useEffect } from 'react';
 import { useReservationDispatch, useReservationState } from '@/providers';
 
 import { ReservationItem } from '@/components/Reservation/Item/ReservationItem';
+import { TravelItemType } from '@/types/TravelItemType';
 
-export const ReservationBox = ({ reservationData }) => {
+interface ReservationBoxProps {
+  reservationData: TravelItemType[];
+}
+
+export const ReservationBox = ({ reservationData }: ReservationBoxProps) => {
   const reservationDispatch = useReservationDispatch();
   const { cart } = useReservationState();
 
@@ -18,7 +23,6 @@ export const ReservationBox = ({ reservationData }) => {
       <Heading size='lg' mb='5'>
         Shopping Cart
       </Heading>
-
       <TableContainer>
         <Table variant='simple'>
           <Thead>

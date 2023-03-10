@@ -1,6 +1,12 @@
 import { Box, Button, Flex } from '@chakra-ui/react';
 
-export const QuantityButton = ({ quantity, onPlus, onMinus }) => {
+interface QuantityButtonProps {
+  quantity: number;
+  onPlus: () => void;
+  onMinus: () => void;
+}
+
+export const QuantityButton = ({ quantity, onPlus, onMinus }: QuantityButtonProps) => {
   return (
     <Flex alignItems='center'>
       <Button size='sm' variant='solid' colorScheme='facebook' onClick={onMinus}>

@@ -15,8 +15,14 @@ import { useState } from 'react';
 import { ReservationButton } from './ReservationButton';
 
 import { QuantityButton } from '@/components/common/QuantityButton';
+import { TravelItemType } from '@/types/TravelItemType';
+interface TravelItemModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  itemData: TravelItemType;
+}
 
-export const TravelItemModal = ({ open, close, itemData }) => {
+export const TravelItemModal = ({ isOpen, onClose, itemData }: TravelItemModalProps) => {
   const {
     idx,
     name,
@@ -41,7 +47,7 @@ export const TravelItemModal = ({ open, close, itemData }) => {
 
   return (
     <>
-      <Modal isOpen={open} onClose={close} isCentered motionPreset='slideInBottom' size='md'>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered motionPreset='slideInBottom' size='md'>
         <ModalOverlay />
         <ModalContent p='5' alignItems='center'>
           <ModalHeader fontSize='2xl'>{name}</ModalHeader>
@@ -67,7 +73,6 @@ export const TravelItemModal = ({ open, close, itemData }) => {
             <Text color='blue.600' fontSize='lg' textAlign='center' fontWeight='bold'>
               ₩{price.toLocaleString()}
             </Text>
-
             <Flex pt='3' flexDirection='column' justifyContent='center' alignItems='center'>
               <Text fontSize='sm' mb='2'>
                 최대 예약 가능 수량: {maximumPurchases}

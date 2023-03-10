@@ -8,17 +8,19 @@ import { FilterCheckboxGroup } from '@/components/Travel/Filter/FilterCheckboxGr
 export const Filter = () => {
   const travelDispatch = useTravelDispatch();
 
-  const handlePriceFilterChange = (filterArr) => {
+  const handlePriceFilterChange = (value: string | string[]) => {
+    if (typeof value === 'string') return;
     travelDispatch({
       type: 'priceFilter',
-      payload: filterArr,
+      payload: value,
     });
   };
 
-  const handleSpaceFilterChange = (filterArr) => {
+  const handleSpaceFilterChange = (value: string | string[]) => {
+    if (typeof value === 'string') return;
     travelDispatch({
       type: 'spaceFilter',
-      payload: filterArr,
+      payload: value,
     });
   };
 

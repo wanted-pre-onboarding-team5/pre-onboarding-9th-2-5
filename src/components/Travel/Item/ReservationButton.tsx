@@ -3,12 +3,19 @@ import { Button, useToast } from '@chakra-ui/react';
 import { getToastCartSuccessOption, TOAST_CART_INFO_OPTION, RESERVATIONS_KEY } from '@/constants';
 import { getLocalStorageItem, setLocalStorageItem } from '@/utils';
 
-export const ReservationButton = ({ itemData, quantity }) => {
+import { TravelItemType } from '@/types/TravelItemType';
+
+interface ReservationButtonProps {
+  itemData: TravelItemType;
+  quantity: number;
+}
+
+export const ReservationButton = ({ itemData, quantity }: ReservationButtonProps) => {
   const { idx, name } = itemData;
   const toast = useToast();
 
   const handleReservationClick = () => {
-    const reservations = getLocalStorageItem(RESERVATIONS_KEY) || [];
+    const reservations = (getLocalStorageItem(RESERVATIONS_KEY) || []) as TravelItemType[];
     const filteredReservations = reservations.filter((reservation) => reservation.idx !== idx);
     if (filteredReservations.length < reservations.length) {
       toast(TOAST_CART_INFO_OPTION);

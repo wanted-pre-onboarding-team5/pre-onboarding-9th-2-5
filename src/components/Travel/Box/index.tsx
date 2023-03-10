@@ -4,8 +4,13 @@ import { useEffect } from 'react';
 import { useTravelDispatch, useTravelState } from '@/providers';
 
 import { TravelItem } from '@/components/Travel/Item';
+import { TravelItemType } from '@/types/TravelItemType';
 
-export const TravelItemBox = ({ travelData }) => {
+interface TravelItemBoxProps {
+  travelData: TravelItemType[];
+}
+
+export const TravelItemBox = ({ travelData }: TravelItemBoxProps) => {
   const travelDispatch = useTravelDispatch();
   const { filteredData } = useTravelState();
 
