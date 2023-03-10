@@ -20,10 +20,12 @@ module.exports = {
   rules: {
     'no-var': 'error',
     'no-multiple-empty-lines': 'error',
+
     'no-console': ['warn', { allow: ['error'] }],
     eqeqeq: 'error',
     'dot-notation': 'error',
-    'no-unused-vars': 'error',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'import/order': [
