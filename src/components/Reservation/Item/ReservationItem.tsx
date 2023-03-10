@@ -1,22 +1,7 @@
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Image,
-  Heading,
-  Text,
-  Button,
-  Tr,
-  Td,
-  Flex,
-  useDisclosure,
-} from '@chakra-ui/react';
+import { Image, Heading, Text, Button, Tr, Td, Flex, useDisclosure } from '@chakra-ui/react';
 import { useState } from 'react';
 
+import { DeleteDialog } from '@/components/common/DeleteDialog';
 import { QuantityButton } from '@/components/common/QuantityButton';
 import { useReservationDispatch } from '@/providers/Reservation/ReservationProvider';
 import { TravelItemType } from '@/types/TravelItemType';
@@ -80,22 +65,13 @@ export const ReservationItem = (props: TravelItemType) => {
         <Td>₩{price.toLocaleString()}</Td>
         <Td fontWeight='bold'>₩{(quantity * price).toLocaleString()}</Td>
       </Tr>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>정말 장바구니에서 삭제하시겠습니까?</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>삭제되는 아이템: {name}</ModalBody>
-          <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button variant='ghost' onClick={removeItem}>
-              Remove
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+      <DeleteDialog
+        isOpen={isOpen}
+        onClose={onClose}
+        title={'정말 장바구니에서 삭제하시겠습니까?'}
+        bodyText={`삭제되는 아이템: ${name}`}
+        onDelete={removeItem}
+      />
     </>
   );
 };
