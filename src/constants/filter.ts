@@ -1,4 +1,9 @@
-export const FILTER_PRICE = [
+export interface Filter {
+  name: string;
+  idx: number | string;
+}
+
+export const FILTER_PRICE: ReadonlyArray<Filter> = [
   {
     name: '~₩10,000',
     idx: 0,
@@ -28,7 +33,7 @@ export const FILTER_PRICE_RANGE = [
   },
 ] as const;
 
-export const FILTER_SPACE = [
+export const FILTER_SPACE: ReadonlyArray<Filter> = [
   {
     name: '강원',
     idx: '강원',

@@ -15,8 +15,14 @@ import { useState } from 'react';
 import { ReservationButton } from './ReservationButton';
 
 import { QuantityButton } from '@/components/common/QuantityButton';
+import { TravelItemType } from '@/types/TravelItemType';
+interface TravelItemModalProps {
+  open: boolean;
+  close: () => void;
+  itemData: TravelItemType;
+}
 
-export const TravelItemModal = ({ open, close, itemData }) => {
+export const TravelItemModal = ({ open, close, itemData }: TravelItemModalProps) => {
   const {
     idx,
     name,

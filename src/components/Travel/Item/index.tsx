@@ -12,7 +12,9 @@ import {
 
 import { TravelItemModal } from './Modal';
 
-export const TravelItem = (props) => {
+import { TravelItemType } from '@/types/TravelItemType';
+
+export const TravelItem = (props: TravelItemType) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { idx, name, mainImage, price, spaceCategory } = props;
 

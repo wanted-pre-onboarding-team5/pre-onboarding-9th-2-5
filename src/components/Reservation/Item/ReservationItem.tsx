@@ -19,8 +19,9 @@ import { useState } from 'react';
 
 import { QuantityButton } from '@/components/common/QuantityButton';
 import { useReservationDispatch } from '@/providers/Reservation/ReservationProvider';
+import { TravelItemType } from '@/types/TravelItemType';
 
-export const ReservationItem = (props) => {
+export const ReservationItem = (props: TravelItemType) => {
   const { idx, name, mainImage, description, price, maximumPurchases, quantity } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const reservationDispatch = useReservationDispatch();
