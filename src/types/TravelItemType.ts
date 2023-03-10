@@ -1,4 +1,4 @@
-export type TravelItemType = {
+export interface TravelItemType {
   idx: number;
   name: string;
   mainImage: string;
@@ -7,4 +7,8 @@ export type TravelItemType = {
   price: number;
   maximumPurchases: number;
   registrationDate: string;
-};
+}
+
+export interface TravelItemType {
+  quantity: number;
+}
