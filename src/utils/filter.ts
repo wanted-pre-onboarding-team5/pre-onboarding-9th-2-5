@@ -1,10 +1,16 @@
 import { FILTER_PRICE_RANGE } from '@/constants';
 
-const getPriceRangeFilter = (priceFilter) => {
-  return priceFilter.map((idx) => FILTER_PRICE_RANGE[idx]);
+import { TravelItemType } from '@/types/TravelItemType';
+
+const getPriceRangeFilter = (priceFilter: string[]) => {
+  return priceFilter.map((idx) => FILTER_PRICE_RANGE[Number(idx)]);
 };
 
-export const filterTravelItems = (data, spaceFilter, priceFilter) => {
+export const filterTravelItems = (
+  data: TravelItemType[],
+  spaceFilter: string[],
+  priceFilter: string[],
+) => {
   if (!spaceFilter.length && !priceFilter.length) {
     return data;
   }
@@ -24,7 +30,7 @@ export const filterTravelItems = (data, spaceFilter, priceFilter) => {
     });
   }
 
-  const filteredTravelItems = [];
+  const filteredTravelItems = [] as TravelItemType[];
   const priceRangeFilter = getPriceRangeFilter(priceFilter);
 
   spaceFilter.forEach((space) => {
