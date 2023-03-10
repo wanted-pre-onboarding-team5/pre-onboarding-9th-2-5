@@ -11,7 +11,7 @@ export const FILTER_PRICE = [
     name: '₩30,000~',
     idx: 2,
   },
-];
+] as const;
 
 export const FILTER_PRICE_RANGE = [
   {
@@ -26,7 +26,7 @@ export const FILTER_PRICE_RANGE = [
     min: 30000,
     max: Infinity,
   },
-];
+] as const;
 
 export const FILTER_SPACE = [
   {
@@ -49,4 +49,4 @@ export const FILTER_SPACE = [
     name: '제주',
     idx: '제주',
   },
-];
+] as const;
