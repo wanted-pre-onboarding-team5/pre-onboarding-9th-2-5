@@ -15,7 +15,7 @@ export const ReservationButton = ({ itemData, quantity }: ReservationButtonProps
   const toast = useToast();
 
   const handleReservationClick = () => {
-    const reservations = getLocalStorageItem(RESERVATIONS_KEY) || [];
+    const reservations = (getLocalStorageItem(RESERVATIONS_KEY) || []) as TravelItemType[];
     const filteredReservations = reservations.filter((reservation) => reservation.idx !== idx);
     if (filteredReservations.length < reservations.length) {
       toast(TOAST_CART_INFO_OPTION);
