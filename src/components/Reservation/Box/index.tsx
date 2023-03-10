@@ -23,7 +23,6 @@ export const ReservationBox = ({ reservationData }: ReservationBoxProps) => {
       <Heading size='lg' mb='5'>
         Shopping Cart
       </Heading>
-
       <TableContainer>
         <Table variant='simple'>
           <Thead>

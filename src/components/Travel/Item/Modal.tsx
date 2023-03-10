@@ -73,7 +73,6 @@ export const TravelItemModal = ({ isOpen, onClose, itemData }: TravelItemModalPr
             <Text color='blue.600' fontSize='lg' textAlign='center' fontWeight='bold'>
               ₩{price.toLocaleString()}
             </Text>
-
             <Flex pt='3' flexDirection='column' justifyContent='center' alignItems='center'>
               <Text fontSize='sm' mb='2'>
                 최대 예약 가능 수량: {maximumPurchases}
