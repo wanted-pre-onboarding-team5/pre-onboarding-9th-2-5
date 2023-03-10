@@ -1,15 +1,36 @@
-import { createContext, useReducer, useContext } from 'react';
+import { createContext, useReducer, useContext, Dispatch, ReactNode } from 'react';
 
 import { reservationReducer } from './reservationReducer';
 
-const initialState = {
+import { TravelItemType } from '@/types/TravelItemType';
+
+export const ACTION_RESERVATION = {
+  init: 'init',
+  remove: 'remove',
+  plus: 'plus',
+  minus: 'minus',
+} as const;
+
+type ReservationActionType = keyof typeof ACTION_RESERVATION;
+export interface ReservationState {
+  cart: TravelItemType[];
+  totalItemCount: number;
+  subtotal: number;
+}
+
+export interface ReservationAction {
+  type: ReservationActionType;
+  payload: TravelItemType[] | number;
+}
+
+const initialState: ReservationState = {
   cart: [],
   totalItemCount: 0,
   subtotal: 0,
 };
 
-const ReservationStateContext = createContext(undefined);
-const ReservationDispatchContext = createContext(null);
+const ReservationStateContext = createContext<ReservationState | null>(null);
+const ReservationDispatchContext = createContext<Dispatch<ReservationAction> | null>(null);
 
 const useReservationState = () => {
   const state = useContext(ReservationStateContext);
@@ -27,7 +48,7 @@ const useReservationDispatch = () => {
   return dispatch;
 };
 
-const ReservationProvider = ({ children }) => {
+const ReservationProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reservationReducer, initialState);
 
   return (
